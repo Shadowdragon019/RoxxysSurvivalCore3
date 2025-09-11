@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "roxxys_survival_core:block/flint",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "roxxys_survival_core:block/flint"
+    },
+    "facing=south": {
+      "model": "roxxys_survival_core:block/flint",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "roxxys_survival_core:block/flint",
+      "y": 270
+    }
+  }
+}

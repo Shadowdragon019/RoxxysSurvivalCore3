@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "roxxys_survival_core:flint"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "roxxys_survival_core:blocks/flint"
+}
