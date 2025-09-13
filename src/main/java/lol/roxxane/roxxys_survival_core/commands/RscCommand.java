@@ -4,7 +4,9 @@ import com.google.gson.*;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
 import lol.roxxane.roxxys_survival_core.Rsc;
+import lol.roxxane.roxxys_survival_core.commands.recipes.RscRecipesRemoveCommand;
 import lol.roxxane.roxxys_survival_core.util.Parsing;
+import net.minecraft.commands.CommandBuildContext;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -18,10 +20,9 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class RscCommand {
 	public static final Gson PRETTY_GSON = new GsonBuilder().setPrettyPrinting().create();
-	public static void register(CommandDispatcher<CommandSourceStack> dispatcher) {
-		var command =
-			Commands.literal("rsc")
-				.requires(source -> source.hasPermission(2));
+	public static void register(CommandDispatcher<CommandSourceStack> dispatcher, CommandBuildContext build_context) {
+		var rsc = Commands.literal("rsc")
+			.requires(source -> source.hasPermission(4));
 		var dump = Commands.literal("dump");
 		for (var entry : BuiltInRegistries.REGISTRY.entrySet()) {
 			var id = entry.getKey().location();
@@ -43,32 +44,38 @@ public class RscCommand {
 			hand.then(Commands.literal(type.name().toLowerCase())
 				.executes(context -> send_to_chat(context, false, type)));
 		}
-		command.then(dump);
-		command.then(hand);
-		command.then(inventory);
-		dispatcher.register(command);
+		var recipes = Commands.literal("recipes");
+		var remove = Commands.literal("remove");
+		RscRecipesRemoveCommand.register_remove(remove);
+		recipes.then(remove);
+		rsc.then(dump);
+		rsc.then(hand);
+		rsc.then(inventory);
+		rsc.then(recipes);
+		dispatcher.register(rsc);
 	}
-	@SuppressWarnings("SameReturnValue")
 	private static int send_to_chat(CommandContext<CommandSourceStack> context, boolean inventory, Type type) {
 		var source = context.getSource();
 		var player = source.getPlayer();
-		if (player == null) return 0;
-		var string = "";
-		if (inventory) {
-			var array = new JsonArray();
-			for (var stack : player.getInventory().items) {
-				var json = jsonify_stack(stack, type);
-				var json_is_empty = json.isJsonObject() && json.getAsJsonObject().asMap().isEmpty();
-				if (!json_is_empty && !stack.isEmpty())
-					array.add(json);
-			}
-			string = PRETTY_GSON.toJson(array);
-		} else string = PRETTY_GSON.toJson(jsonify_stack(player.getMainHandItem(), type));
-		player.displayClientMessage(Component.literal(string)
-			.withStyle(Style.EMPTY
-				.withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Component.literal("Click to copy")))
-				.withClickEvent(new ClickEvent(ClickEvent.Action.COPY_TO_CLIPBOARD, string))),
-			false);
+		if (player != null) {
+			var string = "";
+			if (inventory) {
+				var array = new JsonArray();
+				for (var stack : player.getInventory().items) {
+					var json = jsonify_stack(stack, type);
+					var json_is_empty = json.isJsonObject() && json.getAsJsonObject().asMap().isEmpty();
+					if (!json_is_empty && !stack.isEmpty())
+						array.add(json);
+				}
+				string = PRETTY_GSON.toJson(array);
+			} else string = PRETTY_GSON.toJson(jsonify_stack(player.getMainHandItem(), type));
+			player.displayClientMessage(Component.literal(string)
+					.withStyle(Style.EMPTY
+						.withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,
+							Component.literal("Click to copy")))
+						.withClickEvent(new ClickEvent(ClickEvent.Action.COPY_TO_CLIPBOARD, string))),
+				false);
+		}
 		return 0;
 	}
 	private static JsonElement jsonify_stack(ItemStack stack, Type type) {

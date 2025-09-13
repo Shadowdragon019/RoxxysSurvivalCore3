@@ -21,5 +21,4 @@ public class ModItems {
 	private static RegistryObject<Item> item(String path) {
 		return REGISTRY.register(path, () -> new Item(new Properties()));
 	}
-	public static void register() {}
 }

@@ -2,6 +2,7 @@ package lol.roxxane.roxxys_survival_core;
 
 import com.mojang.logging.LogUtils;
 import lol.roxxane.roxxys_survival_core.blocks.ModBlocks;
+import lol.roxxane.roxxys_survival_core.commands.arguments.ModArgumentTypeInfos;
 import lol.roxxane.roxxys_survival_core.configs.ModClientConfig;
 import lol.roxxane.roxxys_survival_core.configs.ModCommonConfig;
 import lol.roxxane.roxxys_survival_core.configs.ModServerConfig;
@@ -12,17 +13,18 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
 // TODO: Remove sprinting but keep swimming
-// TODO: Creative tab manipulation (make sure to add a "pre" & "post" remove so you can do replace shenanigans
+// NOTE: "search" updates requires a world reload
+// TODO: Way to merge recipes via datapack
+// TODO: Generate recipe jsons ingame <--
 @SuppressWarnings("unused")
 @Mod(Rsc.ID)
 public class Rsc {
     public static final String ID = "roxxys_survival_core";
     public static final Logger LOGGER = LogUtils.getLogger();
     public Rsc(FMLJavaModLoadingContext context) {
-        ModBlocks.register();
-        ModItems.register();
         ModBlocks.REGISTRY.register(context.getModEventBus());
         ModItems.REGISTRY.register(context.getModEventBus());
+        ModArgumentTypeInfos.REGISTRY.register(context.getModEventBus());
         context.registerConfig(ModConfig.Type.SERVER, ModServerConfig.SPEC);
         context.registerConfig(ModConfig.Type.COMMON, ModCommonConfig.SPEC);
         context.registerConfig(ModConfig.Type.CLIENT, ModClientConfig.SPEC);

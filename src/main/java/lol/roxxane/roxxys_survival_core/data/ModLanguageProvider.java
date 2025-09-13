@@ -11,5 +11,9 @@ public class ModLanguageProvider extends LanguageProvider {
 	}
 	protected void addTranslations() {
 		add(ModItems.FLINT.get(), "Flint");
+		add("tooltip.roxxys_survival_core.item_tags_header", "§7Item Tags:");
+		add("tooltip.roxxys_survival_core.block_tags_header", "§7Block Tags:");
+		add("tooltip.roxxys_survival_core.tag_header", "§7Tag:");
+
 	}
 }

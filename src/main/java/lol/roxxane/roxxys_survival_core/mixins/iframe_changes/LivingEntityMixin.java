@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import static lol.roxxane.roxxys_survival_core.configs.ModServerConfig.*;
+import static lol.roxxane.roxxys_survival_core.configs.ModServerConfig.override_iframe_functionality;
 
 @Mixin(LivingEntity.class)
 abstract class LivingEntityMixin extends Entity {

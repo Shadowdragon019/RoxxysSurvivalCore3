@@ -15,6 +15,8 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
@@ -49,6 +51,39 @@ public class Parsing {
 	}
 	public static boolean validate_key(Map<?,?> map, Object key, Predicate<Object> value_predicate) {
 		return map.containsKey(key) && value_predicate.test(map.get(key));
+	}
+	public static void if_id(Object o, Consumer<ResourceLocation> consumer) {
+		if (is_id(o)) consumer.accept(as_id(o));
+	}
+	public static void if_list(Object o, Consumer<List<?>> consumer) {
+		if (o instanceof List<?> list) consumer.accept(list);
+	}
+	public static void if_elements(Object o, Consumer<Object> consumer) {
+		if (o instanceof List<?> list) list.forEach(consumer);
+	}
+	public static void if_entries(Object o, BiConsumer<Object, Object> consumer) {
+		if (o instanceof Map<?,?> map) map.forEach(consumer);
+	}
+	public static void if_stack(Object o, Consumer<ItemStack> consumer) {
+		if (is_stack(o)) consumer.accept(as_stack(o));
+	}
+	public static void if_has_bool(Map<?,?> map, String key, Consumer<Boolean> consumer) {
+		if (map.containsKey(key) && map.get(key) instanceof Boolean bool)
+			consumer.accept(bool);
+	}
+	public static void if_has_map(Map<?,?> map, String key, Consumer<Map<?,?>> consumer) {
+		if (map.containsKey(key) && map.get(key) instanceof Map<?,?> map2)
+			consumer.accept(map2);
+	}
+	public static void if_has_list(Map<?,?> map, String key, Consumer<List<?>> consumer) {
+		if (map.containsKey(key) && map.get(key) instanceof List<?> list)
+			consumer.accept(list);
+	}
+	public static void if_has_elements(Map<?,?> map, String key, Consumer<Object> consumer) {
+		if_has_list(map, key, list -> list.forEach(consumer));
+	}
+	public static void if_has_entries(Map<?,?> map, String key, BiConsumer<Object, Object> consumer) {
+		if_has_map(map, key, map2 -> map2.forEach(consumer));
 	}
 	public static ResourceLocation as_id(Object o) {
 		return Id.of((String) o);
@@ -149,5 +184,16 @@ public class Parsing {
 			return object;
 		}
 		throw new IllegalArgumentException(tag.getClass().toString());
+	}
+	public static Object json_to_normal(JsonElement json) {
+		if (json instanceof JsonPrimitive p) {
+			if (p.isBoolean()) return p.getAsBoolean();
+			else if (p.isNumber()) return p.getAsNumber();
+			else if (p.isString()) return p.getAsString();
+		} else if (json instanceof JsonArray a)
+			return map(a.asList(), Parsing::json_to_normal);
+		else if (json instanceof JsonObject json_object)
+			return map(json_object.asMap(), k -> k, Parsing::json_to_normal);
+		throw new IllegalArgumentException(json.getClass().toString());
 	}
 }

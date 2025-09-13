@@ -20,5 +20,4 @@ public class ModBlocks {
 	private static RegistryObject<Block> block(String path) {
 		return REGISTRY.register(path, () -> new Block(Properties.of()));
 	}
-	public static void register() {}
 }
