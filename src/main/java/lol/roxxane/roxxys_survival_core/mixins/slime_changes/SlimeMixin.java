@@ -1,4 +1,4 @@
-package lol.roxxane.roxxys_survival_core.mixins;
+package lol.roxxane.roxxys_survival_core.mixins.slime_changes;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import net.minecraft.world.entity.monster.Slime;

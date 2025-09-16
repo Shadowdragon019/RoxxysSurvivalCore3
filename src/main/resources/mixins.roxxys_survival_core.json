@@ -11,8 +11,9 @@
 		"mining_cooldown.MultiPlayerGameModeMixin"
 	],
 	"mixins": [
-		"SlimeMixin",
+		"slime_changes.SlimeMixin",
 		"disable_durability.ItemStackMixin",
-		"iframe_changes.LivingEntityMixin"
+		"iframe_changes.LivingEntityMixin",
+		"milk_bucket_does_not_remove_effects.MilkBucketItemMixin"
 	]
 }

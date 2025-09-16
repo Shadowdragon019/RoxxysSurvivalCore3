@@ -21,8 +21,8 @@ public class ModArgumentTypeInfos {
 	public static final RegistryObject<SingletonArgumentInfo<PathArgument>> PATH =
 		register_singleton("path", PathArgument.class, PathArgument::path);
 	@SuppressWarnings({"rawtypes", "unchecked"})
-	public static final RegistryObject<LowercaseEnumArgument.Info> LOWERCASE_ENUM =
-		register("lowercase_enum", LowercaseEnumArgument.class, new LowercaseEnumArgument.Info());
+	public static final RegistryObject<CertainEnumsArgument.Info> CERTAIN_ENUMS =
+		register("certain_enums", CertainEnumsArgument.class, new CertainEnumsArgument.Info());
 	private static <A extends ArgumentType<?>, T extends Template<A>, I extends ArgumentTypeInfo<A, T>>
 	RegistryObject<I> register(String path, Class<A> clazz, I info) {
 		return REGISTRY.register(path, () -> registerByClass(clazz, info));

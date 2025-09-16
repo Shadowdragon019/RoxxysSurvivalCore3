@@ -1,5 +1,7 @@
 package lol.roxxane.roxxys_survival_core;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.mojang.logging.LogUtils;
 import lol.roxxane.roxxys_survival_core.blocks.ModBlocks;
 import lol.roxxane.roxxys_survival_core.commands.arguments.ModArgumentTypeInfos;
@@ -12,8 +14,8 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
-// TODO: Remove sprinting but keep swimming
 // NOTE: "search" updates requires a world reload
+// TODO: Remove sprinting but keep swimming
 // TODO: Way to merge recipes via datapack
 // TODO: Generate recipe jsons ingame <--
 @SuppressWarnings("unused")
@@ -21,6 +23,8 @@ import org.slf4j.Logger;
 public class Rsc {
     public static final String ID = "roxxys_survival_core";
     public static final Logger LOGGER = LogUtils.getLogger();
+    public static final Gson PRETTY_GSON = new GsonBuilder().setPrettyPrinting().create();
+    public static final Gson COMPACT_GSON = new Gson();
     public Rsc(FMLJavaModLoadingContext context) {
         ModBlocks.REGISTRY.register(context.getModEventBus());
         ModItems.REGISTRY.register(context.getModEventBus());

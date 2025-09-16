@@ -10,6 +10,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.event.config.ModConfigEvent;
 
+import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,6 +18,7 @@ import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 
 import static lol.roxxane.roxxys_survival_core.util.New.config;
+import static net.minecraftforge.fml.loading.FMLPaths.GAMEDIR;
 
 @SuppressWarnings({"SameParameterValue", "unused"})
 @EventBusSubscriber(modid = Rsc.ID, bus = EventBusSubscriber.Bus.MOD)
@@ -26,17 +28,29 @@ public class ModServerConfig {
 		_int("survival_mining_cooldown", 0, 0, "Vanilla value is 5");
 	private static final IntValue _CREATIVE_MINING_COOLDOWN =
 		_int("creative_mining_cooldown", 0, 0, "Vanilla value is 5");
-	private static final BooleanValue _OVERRIDE_IFRAME_FUNCTIONALITY = bool("override_iframe_functionality", false);
+	private static final BooleanValue _OVERRIDE_IFRAME_FUNCTIONALITY = _false("override_iframe_functionality");
 	private static final IntValue _DEFAULT_IFRAMES = _int("default_iframes", 0, 0);
 	private static final ConfigValue<UnmodifiableConfig> _DAMAGE_TYPE_IFRAMES =
 		map_entries("damage_type_iframes", config("in_fire", 5, "lava", 5, "hot_floor", 5, "in_wall", 5, "cramming", 5,
 				"cactus", 5, "out_of_world", 5, "dry_out", 5, "sweet_berry_bush", 5),
 			Id::is,
 			value -> value instanceof Integer iframes && iframes > 0);
-	private static final BooleanValue _DISABLE_DURABILITY = bool("disable_durability", false);
+	private static final BooleanValue _DISABLE_DURABILITY = _false("disable_durability");
 	private static final DoubleValue _CONSISTENT_SLIME_DAMAGE = _double("slime_damage", -1, -1,
 		"Makes damage consistent across slime sizes", "Set to -1 for vanilla behavior");
-	private static final BooleanValue _TINY_SLIMES_CAN_ATTACK = bool("tiny_slimes_can_attack", false);
+	private static final BooleanValue _TINY_SLIMES_CAN_ATTACK = _false("tiny_slimes_can_attack");
+	@SuppressWarnings("ResultOfMethodCallIgnored")
+	private static final ConfigValue<String> _RSC_RECIPES_COMMAND_OUTPUT =
+		BUILDER.define("rsc_recipes_command_output", "rsc_output/recipes", o -> {
+			if (o instanceof String string) {
+				try {
+					Path.of(GAMEDIR.get() + string);
+					return true;
+				} catch (Exception ignored) {}
+			}
+			return false;
+		});
+	private static final BooleanValue _MILK_BUCKET_REMOVES_EFFECTS = _false("milk_bucket_removes_effects");
 	public static final ForgeConfigSpec SPEC = BUILDER.build();
 	public static int survival_mining_cooldown = 0;
 	public static int creative_mining_cooldown = 0;
@@ -46,6 +60,8 @@ public class ModServerConfig {
 	public static boolean disable_durability = false;
 	public static double consistent_slime_damage = -1;
 	public static boolean tiny_slimes_deal_damage = false;
+	public static Path rsc_recipes_command_output = Path.of(GAMEDIR.get() + "/rsc_output/recipes");
+	public static boolean milk_bucket_removes_effects = false;
 	@SubscribeEvent
 	public static void on_reload(ModConfigEvent event) {
 		try {
@@ -60,6 +76,8 @@ public class ModServerConfig {
 			disable_durability = _DISABLE_DURABILITY.get();
 			consistent_slime_damage = _CONSISTENT_SLIME_DAMAGE.get();
 			tiny_slimes_deal_damage = _TINY_SLIMES_CAN_ATTACK.get();
+			rsc_recipes_command_output = Path.of(GAMEDIR.get() + "/" + _RSC_RECIPES_COMMAND_OUTPUT.get());
+			milk_bucket_removes_effects = _MILK_BUCKET_REMOVES_EFFECTS.get();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -67,6 +85,12 @@ public class ModServerConfig {
 	// Bool
 	private static BooleanValue bool(String name, boolean _default, String... comments) {
 		return BUILDER.comment(comments).define(name, _default);
+	}
+	private static BooleanValue _true(String name, String... comments) {
+		return bool(name, true, comments);
+	}
+	private static BooleanValue _false(String name, String... comments) {
+		return bool(name, false, comments);
 	}
 	// Int
 	private static IntValue _int(String name, int _default, int min, int max, String... comments) {

@@ -15,27 +15,28 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import static lol.roxxane.roxxys_survival_core.Rsc.log;
+import static lol.roxxane.roxxys_survival_core.Rsc.*;
 import static lol.roxxane.roxxys_survival_core.util.Parsing.*;
 import static net.minecraftforge.fml.loading.FMLPaths.CONFIGDIR;
 
 public class ModClientJsonConfig {
+	public static boolean enable_tab_manipulation = false;
 	public static boolean rsc_command_outputs_pretty_json = true;
 	public static boolean item_tags_in_tooltip = false;
 	public static boolean block_tags_in_tooltip = false;
 	public static boolean tag_in_tooltip = false;
 	public static boolean detailed_tag_in_tooltips = false;
-	public static final Map<ResourceLocation, List<ItemStack>> TABS_REMOVE_PRE = new HashMap<>();
+	public static final Map<ResourceLocation, List<ItemStack>> TABS_REMOVE_PRE = new LinkedHashMap<>();
 	public static final List<ResourceLocation> TABS_CLEAR = new ArrayList<>();
-	public static final Map<ResourceLocation, List<ItemStack>> TABS_ADD_END = new HashMap<>();
-	public static final Map<ResourceLocation, List<ItemStack>> TABS_ADD_START = new HashMap<>();
-	public static final Map<ResourceLocation, Map<ItemStack, List<ItemStack>>> TABS_ADD_AFTER = new HashMap<>();
-	public static final Map<ResourceLocation, Map<ItemStack, List<ItemStack>>> TABS_ADD_BEFORE = new HashMap<>();
-	public static final Map<ResourceLocation, List<ItemStack>> TABS_REMOVE_POST = new HashMap<>();
+	public static final Map<ResourceLocation, List<ItemStack>> TABS_ADD_END = new LinkedHashMap<>();
+	public static final Map<ResourceLocation, List<ItemStack>> TABS_ADD_START = new LinkedHashMap<>();
+	public static final Map<ResourceLocation, Map<ItemStack, List<ItemStack>>> TABS_ADD_AFTER = new LinkedHashMap<>();
+	public static final Map<ResourceLocation, Map<ItemStack, List<ItemStack>>> TABS_ADD_BEFORE = new LinkedHashMap<>();
+	public static final Map<ResourceLocation, List<ItemStack>> TABS_REMOVE_POST = new LinkedHashMap<>();
 	private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 	private static final Path PATH = Path.of(CONFIGDIR.get().toString() + "/roxxys_survival_core_client.json");
 	public static void load() {
@@ -55,6 +56,7 @@ public class ModClientJsonConfig {
 	}
 	private static void make_default_file() throws IOException {
 		var data = GSON.toJsonTree(New.map(
+			"enable_tab_manipulation", false,
 			"tabs", New.map(
 				"add_end", New.map(
 					"ingredients", New.list(
@@ -139,6 +141,7 @@ public class ModClientJsonConfig {
 		if_has_bool(data, "tag_in_tooltip", bool -> tag_in_tooltip = bool);
 		if_has_bool(data, "detailed_tag_in_tooltips", bool -> detailed_tag_in_tooltips = bool);
 		if_has_bool(data, "rsc_command_outputs_pretty_json", bool -> rsc_command_outputs_pretty_json = bool);
+		if_has_bool(data, "enable_tab_manipulation", bool -> enable_tab_manipulation = bool);
 		if_has_map(data, "tabs", tab_data -> {
 			if_has_elements(tab_data, "clear", tab -> if_id(tab, TABS_CLEAR::add));
 			if_has_entries(tab_data, "remove_pre", (tab, items_list) -> {
@@ -191,7 +194,7 @@ public class ModClientJsonConfig {
 									if_stack(item_element, stack ->
 										TABS_ADD_AFTER.computeIfAbsent(
 											as_id(tab_id_string),
-											$ -> new HashMap<>()
+											$ -> new LinkedHashMap<>()
 										).computeIfAbsent(as_stack(after),
 											$ -> new ArrayList<>()
 										).add(stack)));
@@ -209,7 +212,7 @@ public class ModClientJsonConfig {
 									if_stack(item_element, stack ->
 										TABS_ADD_BEFORE.computeIfAbsent(
 											as_id(tab_id_string),
-											$ -> new HashMap<>()
+											$ -> new LinkedHashMap<>()
 										).computeIfAbsent(as_stack(after),
 											$ -> new ArrayList<>()
 										).add(stack)));
@@ -230,5 +233,8 @@ public class ModClientJsonConfig {
 				}
 			});
 		});
+	}
+	public static Gson get_command_gson() {
+		return rsc_command_outputs_pretty_json ? PRETTY_GSON: COMPACT_GSON;
 	}
 }

@@ -11,19 +11,20 @@ import java.util.List;
 
 import static java.util.Objects.requireNonNull;
 
+@SuppressWarnings("unused")
 public enum RecipeItemPredicate {
 	INPUT {
-		public boolean transformed_test(Recipe<?> recipe, List<Item> items, Level level) {
+		protected boolean transformed_test(Recipe<?> recipe, List<Item> items, Level level) {
 			return !items.isEmpty() && recipe.getIngredients().stream()
 				.anyMatch(ingredient -> Arrays.stream(ingredient.getItems())
 					.anyMatch(stack -> items.contains(stack.getItem())));
 		}
 	}, OUTPUT {
-		public boolean transformed_test(Recipe<?> recipe, List<Item> items, Level level) {
+		protected boolean transformed_test(Recipe<?> recipe, List<Item> items, Level level) {
 			return !items.isEmpty() && items.contains(recipe.getResultItem(level.registryAccess()).getItem());
 		}
 	}, BOTH {
-		public boolean transformed_test(Recipe<?> recipe, List<Item> items, Level level) {
+		protected boolean transformed_test(Recipe<?> recipe, List<Item> items, Level level) {
 			return !items.isEmpty() &&
 				(INPUT.transformed_test(recipe, items, level) || OUTPUT.transformed_test(recipe, items, level));
 		}

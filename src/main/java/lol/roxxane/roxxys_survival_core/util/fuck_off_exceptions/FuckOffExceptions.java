@@ -1,17 +1,17 @@
 package lol.roxxane.roxxys_survival_core.util.fuck_off_exceptions;
 
+import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 public class FuckOffExceptions {
 	public static <T> T trycrash(CrashSupplier<T> supplier) {
-		try {
-			return supplier.get();
-		} catch (Exception e) {
-			throw new RuntimeException(e);
-		}
+		return supplier.get();
 	}
 	public static void trycrash(CrashRunnable runnable) {
 		runnable.run();
+	}
+	public static <T> CrashConsumer<T> trycrash(CrashConsumer<T> consumer) {
+		return consumer;
 	}
 	@FunctionalInterface
 	public interface CrashSupplier<T> extends Supplier<T> {
@@ -30,6 +30,17 @@ public class FuckOffExceptions {
 		default void run() {
 			try {
 				$();
+			} catch (Exception e) {
+				throw new RuntimeException(e);
+			}
+		}
+	}
+	@FunctionalInterface
+	public interface CrashConsumer<T> extends Consumer<T> {
+		void $(T t) throws Exception;
+		default void accept(T t) {
+			try {
+				$(t);
 			} catch (Exception e) {
 				throw new RuntimeException(e);
 			}

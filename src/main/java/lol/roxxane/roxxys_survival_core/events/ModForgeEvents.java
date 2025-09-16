@@ -32,7 +32,6 @@ public class ModForgeEvents {
 	@SubscribeEvent
 	public static void register_commands(RegisterCommandsEvent event) {
 		var dispatcher = event.getDispatcher();
-		//RscReloadCommand.register(dispatcher);
 		RscCommand.register(dispatcher, event.getBuildContext());
 	}
 	@SubscribeEvent
