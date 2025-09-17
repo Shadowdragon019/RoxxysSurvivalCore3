@@ -11,9 +11,14 @@
 		"mining_cooldown.MultiPlayerGameModeMixin"
 	],
 	"mixins": [
-		"slime_changes.SlimeMixin",
+		"carve_pumpkins_with_swords.PumpkinBlockMixin",
+		"daylight_detector_is_stone.BlocksMixin",
 		"disable_durability.ItemStackMixin",
 		"iframe_changes.LivingEntityMixin",
-		"milk_bucket_does_not_remove_effects.MilkBucketItemMixin"
+		"milk_bucket_does_not_remove_effects.MilkBucketItemMixin",
+		"remove_honey_bottle_drop_from_hives.BeehiveBlockMixin",
+		"sheep_naturally_drop_wool.SheepMixin",
+		"slime_changes.SlimeMixin",
+		"wasd_controllable_strider.StriderMixin"
 	]
 }

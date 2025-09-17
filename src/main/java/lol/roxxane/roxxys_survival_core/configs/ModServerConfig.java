@@ -38,7 +38,6 @@ public class ModServerConfig {
 	private static final BooleanValue _DISABLE_DURABILITY = _false("disable_durability");
 	private static final DoubleValue _CONSISTENT_SLIME_DAMAGE = _double("slime_damage", -1, -1,
 		"Makes damage consistent across slime sizes", "Set to -1 for vanilla behavior");
-	private static final BooleanValue _TINY_SLIMES_CAN_ATTACK = _false("tiny_slimes_can_attack");
 	@SuppressWarnings("ResultOfMethodCallIgnored")
 	private static final ConfigValue<String> _RSC_RECIPES_COMMAND_OUTPUT =
 		BUILDER.define("rsc_recipes_command_output", "rsc_output/recipes", o -> {
@@ -50,7 +49,6 @@ public class ModServerConfig {
 			}
 			return false;
 		});
-	private static final BooleanValue _MILK_BUCKET_REMOVES_EFFECTS = _false("milk_bucket_removes_effects");
 	public static final ForgeConfigSpec SPEC = BUILDER.build();
 	public static int survival_mining_cooldown = 0;
 	public static int creative_mining_cooldown = 0;
@@ -59,9 +57,7 @@ public class ModServerConfig {
 	public static final Map<ResourceLocation, Integer> DAMAGE_TYPE_IFRAMES = new HashMap<>();
 	public static boolean disable_durability = false;
 	public static double consistent_slime_damage = -1;
-	public static boolean tiny_slimes_deal_damage = false;
 	public static Path rsc_recipes_command_output = Path.of(GAMEDIR.get() + "/rsc_output/recipes");
-	public static boolean milk_bucket_removes_effects = false;
 	@SubscribeEvent
 	public static void on_reload(ModConfigEvent event) {
 		try {
@@ -75,9 +71,7 @@ public class ModServerConfig {
 				DAMAGE_TYPE_IFRAMES.put(Id.of(key), (int) value));
 			disable_durability = _DISABLE_DURABILITY.get();
 			consistent_slime_damage = _CONSISTENT_SLIME_DAMAGE.get();
-			tiny_slimes_deal_damage = _TINY_SLIMES_CAN_ATTACK.get();
 			rsc_recipes_command_output = Path.of(GAMEDIR.get() + "/" + _RSC_RECIPES_COMMAND_OUTPUT.get());
-			milk_bucket_removes_effects = _MILK_BUCKET_REMOVES_EFFECTS.get();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -1,8 +1,6 @@
 package lol.roxxane.roxxys_survival_core.items;
 
 import lol.roxxane.roxxys_survival_core.Rsc;
-import lol.roxxane.roxxys_survival_core.blocks.ModBlocks;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Item.Properties;
 import net.minecraftforge.registries.DeferredRegister;
@@ -13,8 +11,8 @@ import java.util.function.Function;
 
 public class ModItems {
 	public static final DeferredRegister<Item> REGISTRY = DeferredRegister.create(ForgeRegistries.ITEMS, Rsc.ID);
-	public static final RegistryObject<BlockItem> FLINT =
-		item("flint", p -> new BlockItem(ModBlocks.FLINT.get(), p));
+	public static final RegistryObject<FlintItem> FLINT =
+		item("flint", FlintItem::new);
 	private static <T extends Item> RegistryObject<T> item(String path, Function<Properties, T> function) {
 		return REGISTRY.register(path, () -> function.apply(new Properties()));
 	}

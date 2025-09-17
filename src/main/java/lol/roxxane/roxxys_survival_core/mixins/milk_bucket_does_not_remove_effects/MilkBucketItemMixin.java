@@ -10,13 +10,10 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import static lol.roxxane.roxxys_survival_core.configs.ModServerConfig.milk_bucket_removes_effects;
-
 @Mixin(MilkBucketItem.class)
 abstract class MilkBucketItemMixin {
 	@Inject(method = "finishUsingItem", at = @At("HEAD"), cancellable = true)
 	private void ee(ItemStack stack, Level $1, LivingEntity $3, CallbackInfoReturnable<ItemStack> cir) {
-		if (!milk_bucket_removes_effects)
-			cir.setReturnValue(stack);
+		cir.setReturnValue(stack);
 	}
 }
