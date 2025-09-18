@@ -16,6 +16,7 @@
 		"disable_durability.ItemStackMixin",
 		"iframe_changes.LivingEntityMixin",
 		"milk_bucket_does_not_remove_effects.MilkBucketItemMixin",
+		"name_tag_can_rename_items.NameTagItemMixin",
 		"remove_honey_bottle_drop_from_hives.BeehiveBlockMixin",
 		"sheep_naturally_drop_wool.SheepMixin",
 		"slime_changes.SlimeMixin",

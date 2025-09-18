@@ -12,7 +12,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class ModItemTagProvider extends ItemTagsProvider {
 	public ModItemTagProvider(PackOutput output, CompletableFuture<Provider> provider,
-	                          CompletableFuture<TagLookup<Block>> block_tags, @Nullable ExistingFileHelper existing_file_helper
+		CompletableFuture<TagLookup<Block>> block_tags, @Nullable ExistingFileHelper existing_file_helper
 	) {
 		super(output, provider, block_tags, Rsc.ID, existing_file_helper);
 	}

@@ -9,6 +9,7 @@ import lol.roxxane.roxxys_survival_core.configs.ModClientConfig;
 import lol.roxxane.roxxys_survival_core.configs.ModCommonConfig;
 import lol.roxxane.roxxys_survival_core.configs.ModServerConfig;
 import lol.roxxane.roxxys_survival_core.items.ModItems;
+import lol.roxxane.roxxys_survival_core.recipes.ModRecipeSerializers;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -17,7 +18,6 @@ import org.slf4j.Logger;
 // NOTE: "search" updates requires a world reload
 // TODO: Remove sprinting but keep swimming
 // TODO: Way to merge recipes via datapack
-// TODO: Generate recipe jsons ingame <--
 @SuppressWarnings("unused")
 @Mod(Rsc.ID)
 public class Rsc {
@@ -29,6 +29,7 @@ public class Rsc {
         ModBlocks.REGISTRY.register(context.getModEventBus());
         ModItems.REGISTRY.register(context.getModEventBus());
         ModArgumentTypeInfos.REGISTRY.register(context.getModEventBus());
+        ModRecipeSerializers.register();
         context.registerConfig(ModConfig.Type.SERVER, ModServerConfig.SPEC);
         context.registerConfig(ModConfig.Type.COMMON, ModCommonConfig.SPEC);
         context.registerConfig(ModConfig.Type.CLIENT, ModClientConfig.SPEC);

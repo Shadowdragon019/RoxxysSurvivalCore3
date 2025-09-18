@@ -2,12 +2,14 @@ package lol.roxxane.roxxys_survival_core.events;
 
 import lol.roxxane.roxxys_survival_core.Rsc;
 import lol.roxxane.roxxys_survival_core.items.ModItems;
+import lol.roxxane.roxxys_survival_core.packets.ModPacketHandler;
 import lol.roxxane.roxxys_survival_core.util.Id;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 
 import java.util.ArrayList;
 
@@ -86,5 +88,9 @@ public class ModModEvents {
 						event.getEntries().remove(stack);
 			}
 		}
+	}
+	@SubscribeEvent
+	public static void commonSetup(FMLCommonSetupEvent event) {
+		event.enqueueWork(ModPacketHandler::register);
 	}
 }
