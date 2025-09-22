@@ -6,6 +6,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 import lol.roxxane.roxxys_survival_core.util.New;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
 import java.io.FileNotFoundException;
@@ -14,10 +15,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static lol.roxxane.roxxys_survival_core.Rsc.*;
 import static lol.roxxane.roxxys_survival_core.util.Parsing.*;
@@ -37,6 +35,9 @@ public class ModClientJsonConfig {
 	public static final Map<ResourceLocation, Map<ItemStack, List<ItemStack>>> TABS_ADD_AFTER = new LinkedHashMap<>();
 	public static final Map<ResourceLocation, Map<ItemStack, List<ItemStack>>> TABS_ADD_BEFORE = new LinkedHashMap<>();
 	public static final Map<ResourceLocation, List<ItemStack>> TABS_REMOVE_POST = new LinkedHashMap<>();
+	public static final List<ResourceLocation> REMOVE_JEI_CATEGORIES = new ArrayList<>();
+	public static final Map<Item, Integer> BURNABLES = new HashMap<>();
+	//public static final Map<Item, Float> COMPOSTABLES = new HashMap<>();
 	private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 	private static final Path PATH = Path.of(CONFIGDIR.get().toString() + "/roxxys_survival_core_client.json");
 	public static void load() {
@@ -119,7 +120,13 @@ public class ModClientJsonConfig {
 			"block_tags_in_tooltip", true,
 			"tag_in_tooltip", true,
 			"detailed_tag_in_tooltips", false,
-			"rsc_command_outputs_pretty_json", true
+			"rsc_command_outputs_pretty_json", true,
+			"remove_jei_categories", New.list(
+				"anvil", "brewing"
+			),
+			"burnables", New.map(
+				"coal", 0
+			)
 		));
 		var writer = new FileWriter(PATH.toString());
 		writer.write(GSON.toJson(data));
@@ -218,7 +225,7 @@ public class ModClientJsonConfig {
 										).add(stack)));
 						});
 				}
-			});;
+			});
 			if_has_entries(tab_data, "remove_post", (tab, items_list) -> {
 				if (is_id(tab)) {
 					if_list(items_list, items_list2 -> {
@@ -232,6 +239,14 @@ public class ModClientJsonConfig {
 					});
 				}
 			});
+		});
+		REMOVE_JEI_CATEGORIES.clear();
+		if_has_elements(data, "remove_jei_categories", element ->
+			if_id(element, REMOVE_JEI_CATEGORIES::add));
+		BURNABLES.clear();
+		if_has_entries(data, "burnables", (key, value) -> {
+			if (is_item(key) && value instanceof Number number)
+				BURNABLES.put(as_item(key), number.intValue());
 		});
 	}
 	public static Gson get_command_gson() {

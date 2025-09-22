@@ -17,5 +17,6 @@ public class ModLanguageProvider extends LanguageProvider {
 		add("gui.roxxys_survival_core.name_tag", "Name Tag");
 		add("gui.roxxys_survival_core.name_tag.edit_box", "Edit box");
 		add("gui.roxxys_survival_core.name_tag.name_tag", "Name tag");
+		add("tooltip.roxxys_survival_core.flint", "§7Knap knap!");
 	}
 }

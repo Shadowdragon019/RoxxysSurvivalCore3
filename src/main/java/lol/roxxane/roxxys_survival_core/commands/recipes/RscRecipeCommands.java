@@ -5,6 +5,8 @@ import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import lol.roxxane.roxxys_survival_core.commands.arguments.ResourceResult;
 import lol.roxxane.roxxys_survival_core.commands.arguments.TagResult;
+import lol.roxxane.roxxys_survival_core.commands.recipes.filtering_v2.RecipeIdValidator;
+import lol.roxxane.roxxys_survival_core.commands.recipes.filtering_v2.RecipeItemsValidator;
 import lol.roxxane.roxxys_survival_core.util.Id;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.arguments.ResourceOrTagKeyArgument.Result;
@@ -17,8 +19,13 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeType;
+import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 import static lol.roxxane.roxxys_survival_core.commands.arguments.CertainEnumsArgument.certain_enums_argument;
 import static lol.roxxane.roxxys_survival_core.commands.arguments.NamespaceArgument.get_namespace;
@@ -93,5 +100,16 @@ public class RscRecipeCommands {
 			case PATH -> id.getPath();
 			case ID -> id.toString();
 		};
+	}
+	public static Stream<Recipe<?>> filterRecipes(List<Recipe<?>> recipes,
+    @Nullable RecipeType<?> type,
+    @Nullable RecipeIdValidator idValidator,
+    @Nullable RecipeItemsValidator itemsValidator) {
+		return recipes.stream().filter(recipe -> {
+			if (idValidator != null && !idValidator.test(recipe.getId())) return false;
+			if (itemsValidator != null && !itemsValidator.test(recipe)) return false;
+			if (type != null && recipe.getType() != type) return false;
+			return true;
+		});
 	}
 }

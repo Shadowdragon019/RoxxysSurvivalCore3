@@ -6,6 +6,7 @@ import com.google.gson.JsonPrimitive;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
 import lol.roxxane.roxxys_survival_core.Rsc;
+import lol.roxxane.roxxys_survival_core.commands.recipes.RscRecipesDumpCommand;
 import lol.roxxane.roxxys_survival_core.commands.recipes.RscRecipesRemoveCommand;
 import lol.roxxane.roxxys_survival_core.util.Parsing;
 import net.minecraft.commands.CommandBuildContext;
@@ -47,20 +48,20 @@ public class RscCommand {
 			.then(literal("item")
 				.executes(context -> send_to_chat(context, false, true)));
 		var inventory = literal("inventory")
-			.executes(context -> send_to_chat(context, false, false))
+			.executes(context -> send_to_chat(context, true, false))
 			.then(literal("stack")
 				.executes(context -> send_to_chat(context, true, false)))
 			.then(literal("item")
 				.executes(context -> send_to_chat(context, true, true)));
 		var recipes = literal("recipes");
 		var remove = literal("remove");
-		//var replace = Commands.literal("replace");
+		var recipesDump = literal("dump");
 		var dev = literal("dev");
 		RscRecipesRemoveCommand.register(remove);
-		//RscRecipesReplaceCommand.register(replace, build_context);
+		RscRecipesDumpCommand.register(recipesDump);
 		RscDevCommand.register(dev);
 		recipes.then(remove);
-		//recipes.then(replace);
+		recipes.then(recipesDump);
 		rsc.then(dump);
 		rsc.then(hand);
 		rsc.then(inventory);

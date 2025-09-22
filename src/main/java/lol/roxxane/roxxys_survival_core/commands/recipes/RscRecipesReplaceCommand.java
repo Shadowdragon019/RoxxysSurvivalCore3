@@ -24,22 +24,22 @@ import static net.minecraft.commands.arguments.item.ItemArgument.item;
 import static net.minecraftforge.registries.ForgeRegistries.ITEMS;
 
 public class RscRecipesReplaceCommand {
-	// id contains/equals input/output/both item (target) item (replace)
-	// id contains/equals input/output/both hand (target) item (replace)
-	// id contains/equals input/output/both item (target) hand (replace)
-	// id contains/equals input/output/both hand (target) hand (replace)
-	// namespace contains/equals input/output/both item (target) item (replace)
-	// namespace contains/equals input/output/both hand (target) item (replace)
-	// namespace contains/equals input/output/both item (target) hand (replace)
-	// namespace contains/equals input/output/both hand (target) hand (replace)
-	// path contains/equals input/output/both item (target) item (replace)
-	// path contains/equals input/output/both hand (target) item (replace)
-	// path contains/equals input/output/both item (target) hand (replace)
-	// path contains/equals input/output/both hand (target) hand (replace)
-	// any_id input/output/both item (target) item (replace)
-	// any_id input/output/both hand (target) item (replace)
-	// any_id input/output/both item (target) hand (replace)
-	// any_id input/output/both hand (target) hand (replace)
+	// id contains/equals input/result/both item (target) item (replace)
+	// id contains/equals input/result/both hand (target) item (replace)
+	// id contains/equals input/result/both item (target) hand (replace)
+	// id contains/equals input/result/both hand (target) hand (replace)
+	// namespace contains/equals input/result/both item (target) item (replace)
+	// namespace contains/equals input/result/both hand (target) item (replace)
+	// namespace contains/equals input/result/both item (target) hand (replace)
+	// namespace contains/equals input/result/both hand (target) hand (replace)
+	// path contains/equals input/result/both item (target) item (replace)
+	// path contains/equals input/result/both hand (target) item (replace)
+	// path contains/equals input/result/both item (target) hand (replace)
+	// path contains/equals input/result/both hand (target) hand (replace)
+	// any_id input/result/both item (target) item (replace)
+	// any_id input/result/both hand (target) item (replace)
+	// any_id input/result/both item (target) hand (replace)
+	// any_id input/result/both hand (target) hand (replace)
 	public static void register(LiteralArgumentBuilder<CommandSourceStack> replace, CommandBuildContext build_context) {
 		var any_id = literal("any_id")
 			.then(recipe_item_predicate_command()
@@ -75,7 +75,7 @@ public class RscRecipesReplaceCommand {
 			.then(id);
 	}
 	// input Result -> Result
-	// output Result -> Item (error if item)
+	// result Result -> Item (error if item)
 	// both Result -> Item (error if item)
 	private static int replace(CommandContext<CommandSourceStack> context, Result<Item> target, Result<Item> result) {
 		var source = context.getSource();

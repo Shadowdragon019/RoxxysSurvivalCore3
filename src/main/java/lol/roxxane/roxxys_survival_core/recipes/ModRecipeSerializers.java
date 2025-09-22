@@ -12,6 +12,7 @@ import static java.util.Objects.requireNonNull;
 
 public class ModRecipeSerializers {
 	public static SimpleRecipeSerializer<NameItemRecipe> NAME_ITEM = register_simple("name_item", NameItemRecipe::new);
+	public static JeiCraftingRecipe.Serializer JEI_CRAFTING = register("jei_crafting", new JeiCraftingRecipe.Serializer());
 	@SuppressWarnings("unchecked")
 	private static <S extends RecipeSerializer<T>, T extends Recipe<?>> S register(String key, S serializer) {
 		ForgeRegistries.RECIPE_SERIALIZERS.register(Id.mod(key), serializer);

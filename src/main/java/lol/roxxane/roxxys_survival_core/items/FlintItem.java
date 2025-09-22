@@ -13,8 +13,10 @@ public class FlintItem extends BlockItem {
 	public InteractionResult useOn(UseOnContext context) {
 		var player = context.getPlayer();
 		if (player == null) return super.useOn(context);
-		var offhand_item = player.getOffhandItem();
-		if (!offhand_item.is(ModItems.FLINT.get())) return super.useOn(context);
+		var offhandItem = player.getOffhandItem();
+		var mainHandItem = player.getMainHandItem();
+		if (!offhandItem.is(ModItems.FLINT.get())) return super.useOn(context);
+		if (!mainHandItem.is(ModItems.FLINT.get())) return super.useOn(context);
 		return Items.FLINT_AND_STEEL.useOn(context);
 	}
 }

@@ -26,6 +26,11 @@ public class ModRecipeProvider extends RecipeProvider {
 	protected void buildRecipes(Consumer<FinishedRecipe> writer) {
 		this.writer = writer;
 		new NameItemRecipe(Id.mod("name_tag")).save(writer);
+		/*new JeiCraftingRecipe(Id.mod("test"),
+			NonNullList.of(null, Ingredient.of(Items.GLASS)),
+			Ingredient.of(ItemTags.LOGS),
+			true,
+			Map.of(Id.of("crafting"), List.of(Id.of("oak_planks")))).save(writer);*/
 	}
 	@SuppressWarnings({"unchecked", "SameParameterValue"})
 	protected void shaped(RecipeCategory category, ItemLike output, int count, List<String> patterns,

@@ -42,7 +42,7 @@ public class RscRecipesRemoveCommand {
 		\t"type": "forge:false"
 		}
 		""";
-	private static LiteralArgumentBuilder<CommandSourceStack> builder_parser_argument(String name, IdParser parser, ArgumentType<?> type) {
+	public static LiteralArgumentBuilder<CommandSourceStack> builder_parser_argument(String name, IdParser parser, ArgumentType<?> type) {
 		return literal(name)
 			.then(id_validator_command()
 				.then(item_commands(argument(name, type), $ -> parser, RscRecipeCommands::id_validator_argument, RscRecipeCommands::item_argument)
@@ -57,12 +57,12 @@ public class RscRecipesRemoveCommand {
 			.then(builder_parser_argument("path", PATH, path()))
 			.then(builder_parser_argument("id", ID, id()));
 	}
-	private static boolean validate_recipe_id(Recipe<?> recipe, CommandContext<CommandSourceStack> context, @Nullable IdParser id_parser, @Nullable IdValidator id_validator) {
+	public static boolean validate_recipe_id(Recipe<?> recipe, CommandContext<CommandSourceStack> context, @Nullable IdParser id_parser, @Nullable IdValidator id_validator) {
 		var recipe_id = recipe.getId();
 		if (id_validator == null || id_parser == null) return true;
 		return id_validator.test(parse_recipe_id(id_parser, recipe_id), parse_target_id(id_parser, context));
 	}
-	private static boolean item_or_tag_exists(@Nullable Result<Item> item_or_tag) {
+	public static boolean item_or_tag_exists(@Nullable Result<Item> item_or_tag) {
 		if (item_or_tag == null)
 			return false;
 		var item_or_tag_is_empty_or_air = Id.is_empty_or_air(item_or_tag.unwrap().map(ResourceKey::location, TagKey::location));
@@ -71,13 +71,13 @@ public class RscRecipesRemoveCommand {
 			tag_key -> requireNonNull(ITEMS.tags()).isKnownTagName(tag_key));
 		return !item_or_tag_is_empty_or_air && item_or_tag_exists;
 	}
-	private static List<Result<Item>> remove_nonexistent_items_or_tags(List<Result<Item>> item_or_tags) {
+	public static List<Result<Item>> remove_nonexistent_items_or_tags(List<Result<Item>> item_or_tags) {
 		return item_or_tags.stream().filter(RscRecipesRemoveCommand::item_or_tag_exists).toList();
 	}
-	private static boolean validate_recipe_items(Recipe<?> recipe, RecipeItemPredicate recipe_item_predicate, List<Result<Item>> item_or_tags, Level level) {
+	public static boolean validate_recipe_items(Recipe<?> recipe, RecipeItemPredicate recipe_item_predicate, List<Result<Item>> item_or_tags, Level level) {
 		return item_or_tags.stream().anyMatch(item_or_tag -> recipe_item_predicate.test(recipe, item_or_tag, level));
 	}
-	private static int remove(CommandContext<CommandSourceStack> context, @Nullable IdParser id_parser, @Nullable IdValidator id_validator, @Nullable RecipeItemPredicate recipe_item_predicate, @Nullable Result<Item> item_or_tag) {
+	public static int remove(CommandContext<CommandSourceStack> context, @Nullable IdParser id_parser, @Nullable IdValidator id_validator, @Nullable RecipeItemPredicate recipe_item_predicate, @Nullable Result<Item> item_or_tag) {
 		var source = context.getSource();
 		source.sendSystemMessage(Component.literal("Going through recipes!"));
 		var level = context.getSource().getLevel();
@@ -90,7 +90,7 @@ public class RscRecipesRemoveCommand {
 				if (!item_or_tag_exists) return false;
 				return recipe_item_predicate.test(recipe, item_or_tag, level);
 			})
-			.map(Recipe::getId).toList().forEach(trycrash(id -> {
+			.map(Recipe::getId).forEach(trycrash(id -> {
 				var path = rsc_recipes_command_output
 					.resolve(id.getNamespace())
 					.resolve("recipes")
@@ -106,8 +106,7 @@ public class RscRecipesRemoveCommand {
 		source.sendSuccess(() -> Component.literal("Found %s recipes!".formatted(found)), true);
 		return 0;
 	}
-	// Argument builders
-	private static <T extends ArgumentBuilder<CommandSourceStack, T>> T item_commands(T command,
+	public static <T extends ArgumentBuilder<CommandSourceStack, T>> T item_commands(T command,
 	Function<CommandContext<CommandSourceStack>, @Nullable IdParser> parser,
 	Function<CommandContext<CommandSourceStack>, @Nullable IdValidator> validator,
 	Function<CommandContext<CommandSourceStack>, Result<Item>> item) {

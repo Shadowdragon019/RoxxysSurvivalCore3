@@ -9,6 +9,7 @@ import lol.roxxane.roxxys_survival_core.configs.ModClientConfig;
 import lol.roxxane.roxxys_survival_core.configs.ModCommonConfig;
 import lol.roxxane.roxxys_survival_core.configs.ModServerConfig;
 import lol.roxxane.roxxys_survival_core.items.ModItems;
+import lol.roxxane.roxxys_survival_core.recipes.JeiCraftingRecipe;
 import lol.roxxane.roxxys_survival_core.recipes.ModRecipeSerializers;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
@@ -16,8 +17,31 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
 // NOTE: "search" updates requires a world reload
-// TODO: Remove sprinting but keep swimming
-// TODO: Way to merge recipes via datapack
+// Remove sprinting but keep swimming
+// Mess with food properties
+// Kelp block (that smelts into a dried kelp block)
+// Burn recipes (fire)
+// Smelt recipes (lava)
+// Recovery compass on death (on items back from grave remove it from inventory)
+// Right-click beehive to get honey blocks. Change recipes accordingly.
+// Gravel gives (the proper) kind of flint (make it more common)
+// Make sheep not drop wool when killed
+// Make sheep/mobs more durable
+// Remove illagers & wandering traders
+// Remove
+// Merge the Nether into the overworld (have it be at the very bottom. get diamonds there!)
+// Deal with creepers being gone
+// Remove sweet berries (or make them take way longer to grow & spread, currently they give way too much bang for buck)
+// Make wolves spawn wherever sheep spawn so you have to protect them
+// Make mobs spawn closer to the player so at night they're forced to fight/interact with them
+// Custom structures~ (and/or pools)
+// Remove biomes I don't want (look at snowcapped!)
+// Make phantom naturally spawn at night? (I like the idea but I'm not sure if it ignores too much of the players defenses since it can just fly in if you're not completely covered. Hmm, requires no light where the player is?)
+// Make ores gen
+
+// I don't think mobs *have* to have drops. Their purpose is to make the player build a base.
+
+/// TODO: Output count for {@link JeiCraftingRecipe}
 @SuppressWarnings("unused")
 @Mod(Rsc.ID)
 public class Rsc {
