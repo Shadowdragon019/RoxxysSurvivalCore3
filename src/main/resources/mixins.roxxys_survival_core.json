@@ -19,7 +19,7 @@
 		"milk_bucket_does_not_remove_effects.MilkBucketItemMixin",
 		"modify_firework_star_recipe.FireworkStarRecipeMixin",
 		"name_tag_can_rename_items.NameTagItemMixin",
-		"remove_honey_bottle_drop_from_hives.BeehiveBlockMixin",
+		"change_hive_drops.BeehiveBlockMixin",
 		"sheep_naturally_drop_wool.SheepMixin",
 		"slime_changes.SlimeMixin",
 		"wasd_controllable_strider.StriderMixin"

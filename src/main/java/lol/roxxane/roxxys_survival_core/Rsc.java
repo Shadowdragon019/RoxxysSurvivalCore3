@@ -38,6 +38,10 @@ import org.slf4j.Logger;
 // Remove biomes I don't want (look at snowcapped!)
 // Make phantom naturally spawn at night? (I like the idea but I'm not sure if it ignores too much of the players defenses since it can just fly in if you're not completely covered. Hmm, requires no light where the player is?)
 // Make ores gen
+// Hoes require iron or above
+// Iron takes more T I M E to make
+// Crops take time to break (hoe is efficient!)
+// Copper is used instead of emeralds
 
 // I don't think mobs *have* to have drops. Their purpose is to make the player build a base.
 
