@@ -12,7 +12,6 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
@@ -131,7 +130,7 @@ public class RscRecipesRemoveCommand {
 				.executes(context -> {
 					var player = requireNonNull(context.getSource().getPlayerOrException());
 					player.getInventory().items.stream()
-						.filter(ItemStack::isEmpty)
+						.filter(stack -> !stack.isEmpty())
 						.forEach(stack ->
 							remove(context, parser.apply(context), validator.apply(context), recipe_item_predicate_argument(context), get_result(stack)));
 					return 0;
