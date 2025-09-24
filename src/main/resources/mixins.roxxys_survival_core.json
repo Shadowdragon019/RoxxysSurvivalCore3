@@ -25,6 +25,7 @@
 		"respawn_totem_functionality.PlayerMixin",
 		"sheep_naturally_drop_wool.SheepMixin",
 		"slime_changes.SlimeMixin",
-		"wasd_controllable_strider.StriderMixin"
+		"wasd_controllable_strider.StriderMixin",
+		"water_and_floating_dont_slow_down_dig_speed.PlayerMixin"
 	]
 }

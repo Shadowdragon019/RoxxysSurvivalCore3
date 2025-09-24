@@ -45,6 +45,9 @@ import org.slf4j.Logger;
 // Merge cod/salmon (I wanna merge them into one entity if possible~)
 // Remove the big iron/copper ore thingies
 // Jei recipe for naming items
+// Prevent zombies/undead from drowning (or turning into drowned)
+// Remove break speed penalty when underwear or climbing
+
 
 // I don't think mobs *have* to have drops. Their purpose is to make the player build a base.
 // Make stuff drop itself without silk touch
