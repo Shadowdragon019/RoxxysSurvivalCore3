@@ -21,6 +21,7 @@
 		"modify_firework_star_recipe.FireworkStarRecipeMixin",
 		"name_tag_can_rename_items.NameTagItemMixin",
 		"place_respawn_totem_at_worldgen.SimpleBlockFeatureMixin",
+		"remove_xp.ExperienceOrbMixin",
 		"respawn_totem_functionality.PlayerMixin",
 		"sheep_naturally_drop_wool.SheepMixin",
 		"slime_changes.SlimeMixin",

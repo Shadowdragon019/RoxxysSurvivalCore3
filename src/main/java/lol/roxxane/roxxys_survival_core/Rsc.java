@@ -27,17 +27,18 @@ import org.slf4j.Logger;
 // Merge the Nether into the overworld (have it be at the very bottom. get diamonds there!)
 // Deal with creepers being gone
 // Remove sweet berries (or make them take way longer to grow & spread, currently they give way too much bang for buck)
-// Make wolves spawn wherever sheep spawn so you have to protect them
+// Make wolves spawn wherever farm animals spawn so you have to protect them
+// Make wolves attack farm animals
 // Make mobs spawn closer to the player so at night they're forced to fight/interact with them
-// Custom structures~ (and/or pools)
+// Custom structures~
 // Remove biomes I don't want (look at snowcapped!)
 // Make phantom naturally spawn at night? (I like the idea but I'm not sure if it ignores too much of the players defenses since it can just fly in if you're not completely covered. Hmm, requires no light where the player is?)
-// Ore gen
 // Iron takes more T I M E to make
 // Crops take time to break (hoe is efficient!)
 // Copper is used instead of emeralds
-// Make stuff drop itself without silk touch (ore drop themselves, smelt them into their material)
 // Make leaves craft into saplings
+// Ores drop themselves
+// Disable XP
 // Make rabbits spawn everywhereh
 // Make black dye obtainable
 // Make cats naturally spawn
@@ -46,6 +47,7 @@ import org.slf4j.Logger;
 // Jei recipe for naming items
 
 // I don't think mobs *have* to have drops. Their purpose is to make the player build a base.
+// Make stuff drop itself without silk touch
 
 /// TODO: Output count for {@link JeiCraftingRecipe}
 @SuppressWarnings("unused")
