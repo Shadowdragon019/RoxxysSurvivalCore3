@@ -20,15 +20,13 @@ import org.jetbrains.annotations.Nullable;
 
 import static lol.roxxane.roxxys_survival_core.blocks.ModStateProperties.RESPAWN_TOTEM_PART;
 import static lol.roxxane.roxxys_survival_core.blocks.state_property_enums.RespawnTotemPart.*;
-import static net.minecraft.world.level.block.state.properties.BlockStateProperties.WATERLOGGED;
 
 @SuppressWarnings("deprecation")
 public class RespawnTotemBlock extends Block {
 	public RespawnTotemBlock(Properties properties) {
 		super(properties);
 		registerDefaultState(defaultBlockState()
-			.setValue(RESPAWN_TOTEM_PART, BOTTOM)
-			.setValue(WATERLOGGED, false));
+			.setValue(RESPAWN_TOTEM_PART, BOTTOM));
 	}
 	public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
 		if (player instanceof ServerPlayer serverPlayer) {
@@ -59,13 +57,16 @@ public class RespawnTotemBlock extends Block {
 	public void setPlacedBy(Level level, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
 		var middlePos = pos.above();
 		var topPos = middlePos.above();
-		level.setBlockAndUpdate(middlePos, defaultBlockState().setValue(RESPAWN_TOTEM_PART, MIDDLE).setValue(WATERLOGGED, level.isWaterAt(middlePos)));
-		level.setBlockAndUpdate(topPos, defaultBlockState().setValue(RESPAWN_TOTEM_PART, TOP).setValue(WATERLOGGED, level.isWaterAt(topPos)));
+		level.setBlockAndUpdate(middlePos, defaultBlockState().setValue(RESPAWN_TOTEM_PART, MIDDLE));
+		level.setBlockAndUpdate(topPos, defaultBlockState().setValue(RESPAWN_TOTEM_PART, TOP));
 	}
 	public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
-		return level.getBlockState(pos.above()).canBeReplaced() && level.getBlockState(pos.above().above()).canBeReplaced();
+		var middleCanBePlaced = level.getBlockState(pos.above()).canBeReplaced();
+		var topCanBePlaced = level.getBlockState(pos.above(2)).canBeReplaced();
+		var fitsInWorld = pos.getY() < level.getMaxBuildHeight() - 2;
+		return middleCanBePlaced && topCanBePlaced && fitsInWorld;
 	}
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-		builder.add(RESPAWN_TOTEM_PART, WATERLOGGED);
+		builder.add(RESPAWN_TOTEM_PART);
 	}
 }

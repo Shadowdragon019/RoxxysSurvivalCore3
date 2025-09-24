@@ -20,6 +20,7 @@
 		"milk_bucket_does_not_remove_effects.MilkBucketItemMixin",
 		"modify_firework_star_recipe.FireworkStarRecipeMixin",
 		"name_tag_can_rename_items.NameTagItemMixin",
+		"place_respawn_totem_at_worldgen.SimpleBlockFeatureMixin",
 		"respawn_totem_functionality.PlayerMixin",
 		"sheep_naturally_drop_wool.SheepMixin",
 		"slime_changes.SlimeMixin",
