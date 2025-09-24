@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "roxxys_survival_core:block/respawn_totem/oak_end",
+    "side": "roxxys_survival_core:block/respawn_totem/oak_side"
+  }
+}

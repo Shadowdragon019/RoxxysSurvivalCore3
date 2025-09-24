@@ -13,5 +13,6 @@ public class ModItemModelProvider extends ItemModelProvider {
 	protected void registerModels() {
 		withExistingParent("item/flint", Id.mc("generated"))
 			.texture("layer0", Id.mc("item/flint"));
+		withExistingParent("item/oak_respawn_totem", modLoc("block/oak_respawn_totem"));
 	}
 }

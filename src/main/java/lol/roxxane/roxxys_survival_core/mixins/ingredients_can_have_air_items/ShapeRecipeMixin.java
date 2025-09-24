@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(ShapedRecipe.class)
-abstract class ShapeRecipeMixin {
+public abstract class ShapeRecipeMixin {
 	@Inject(method = "itemFromJson",
 		cancellable = true,
 		at = @At(value = "FIELD",

@@ -12,6 +12,7 @@
 	],
 	"mixins": [
 		"carve_pumpkins_with_swords.PumpkinBlockMixin",
+		"change_hive_drops.BeehiveBlockMixin",
 		"daylight_detector_is_stone.BlocksMixin",
 		"disable_durability.ItemStackMixin",
 		"iframe_changes.LivingEntityMixin",
@@ -19,7 +20,7 @@
 		"milk_bucket_does_not_remove_effects.MilkBucketItemMixin",
 		"modify_firework_star_recipe.FireworkStarRecipeMixin",
 		"name_tag_can_rename_items.NameTagItemMixin",
-		"change_hive_drops.BeehiveBlockMixin",
+		"respawn_totem_functionality.PlayerMixin",
 		"sheep_naturally_drop_wool.SheepMixin",
 		"slime_changes.SlimeMixin",
 		"wasd_controllable_strider.StriderMixin"

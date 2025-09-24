@@ -26,6 +26,7 @@ public class ModLootTableProvider extends LootTableProvider {
 		}
 		protected void generate() {
 			dropOther(ModBlocks.FLINT.get(), ModItems.FLINT.get());
+			add(ModBlocks.OAK_RESPAWN_TOTEM.get(), noDrop());
 		}
 		public Iterable<Block> getKnownBlocks() {
 			return ModBlocks.REGISTRY.getEntries()

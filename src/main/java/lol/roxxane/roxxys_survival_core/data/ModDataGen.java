@@ -5,8 +5,9 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 
-@net.minecraftforge.fml.common.Mod.EventBusSubscriber(modid = Rsc.ID, bus = net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = Rsc.ID, bus = EventBusSubscriber.Bus.MOD)
 public class ModDataGen {
 	private static GatherDataEvent event;
 	private static DataGenerator generator;
@@ -23,8 +24,8 @@ public class ModDataGen {
 		server(new ModGeneralDataProvider(output, provider));
 		server(new ModRecipeProvider(output));
 		server(new ModLootTableProvider(output));
-		client(new ModItemModelProvider(output, existing_file_helper));
 		client(new ModBlockStateProvider(output, existing_file_helper));
+		client(new ModItemModelProvider(output, existing_file_helper));
 		client(new ModLanguageProvider(output, "en_us"));
 	}
 	private static <T extends DataProvider> T server(T provider) {

@@ -2,6 +2,7 @@ package lol.roxxane.roxxys_survival_core.data;
 
 import lol.roxxane.roxxys_survival_core.Rsc;
 import lol.roxxane.roxxys_survival_core.blocks.ModBlocks;
+import lol.roxxane.roxxys_survival_core.util.Id;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
@@ -22,5 +23,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
 				.build(),
 			BlockStateProperties.WATERLOGGED
 		);
+		models().cubeColumn("block/oak_respawn_totem", Id.mod("block/respawn_totem/oak_side"), Id.mod("block/respawn_totem/oak_end"));
+		simpleBlock(ModBlocks.OAK_RESPAWN_TOTEM.get(), models().getExistingFile(modLoc("block/oak_respawn_totem")));
 	}
 }

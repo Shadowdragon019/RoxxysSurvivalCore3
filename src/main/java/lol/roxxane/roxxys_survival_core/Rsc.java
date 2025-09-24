@@ -23,12 +23,7 @@ import org.slf4j.Logger;
 // Burn recipes (fire)
 // Smelt recipes (lava)
 // Recovery compass on death (on items back from grave remove it from inventory)
-// Right-click beehive to get honey blocks. Change recipes accordingly.
-// Gravel gives (the proper) kind of flint (make it more common)
-// Make sheep not drop wool when killed
 // Make sheep/mobs more durable
-// Remove illagers & wandering traders
-// Remove
 // Merge the Nether into the overworld (have it be at the very bottom. get diamonds there!)
 // Deal with creepers being gone
 // Remove sweet berries (or make them take way longer to grow & spread, currently they give way too much bang for buck)
@@ -37,11 +32,18 @@ import org.slf4j.Logger;
 // Custom structures~ (and/or pools)
 // Remove biomes I don't want (look at snowcapped!)
 // Make phantom naturally spawn at night? (I like the idea but I'm not sure if it ignores too much of the players defenses since it can just fly in if you're not completely covered. Hmm, requires no light where the player is?)
-// Make ores gen
-// Hoes require iron or above
+// Ore gen
 // Iron takes more T I M E to make
 // Crops take time to break (hoe is efficient!)
 // Copper is used instead of emeralds
+// Make stuff drop itself without silk touch (ore drop themselves, smelt them into their material)
+// Make leaves craft into saplings
+// Make rabbits spawn everywhereh
+// Make black dye obtainable
+// Make cats naturally spawn
+// Merge cod/salmon (I wanna merge them into one entity if possible~)
+// Remove the big iron/copper ore thingies
+// Jei recipe for naming items
 
 // I don't think mobs *have* to have drops. Their purpose is to make the player build a base.
 

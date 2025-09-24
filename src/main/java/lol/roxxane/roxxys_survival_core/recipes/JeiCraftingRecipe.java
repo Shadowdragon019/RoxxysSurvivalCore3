@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
 
-/// {@link lol.roxxane.roxxys_survival_core.mixins.ingredients_can_have_air_items.ShapedRecipeMixin}
+/// {@link lol.roxxane.roxxys_survival_core.mixins.ingredients_can_have_air_items.ShapeRecipeMixin}
 public class JeiCraftingRecipe extends CustomRecipe {
 	public final NonNullList<Ingredient> ingredients;
 	public final Ingredient output;
