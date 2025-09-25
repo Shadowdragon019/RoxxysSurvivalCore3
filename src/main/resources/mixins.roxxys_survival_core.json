@@ -26,6 +26,12 @@
 		"sheep_naturally_drop_wool.SheepMixin",
 		"slime_changes.SlimeMixin",
 		"wasd_controllable_strider.StriderMixin",
-		"water_and_floating_dont_slow_down_dig_speed.PlayerMixin"
+		"water_and_floating_dont_slow_down_dig_speed.PlayerMixin",
+		"witch_changes.WitchMixin",
+		"witch_changes.witch_fire_resistance.LivingEntityMixin",
+		"witch_changes.witch_invisibility.LivingEntityMixin",
+		"witch_changes.witch_jump_boost.LivingEntityMixin",
+		"witch_changes.witch_resistance.LivingEntityMixin",
+		"witch_changes.witch_water_breathing.MobEffectUtilMixin"
 	]
 }

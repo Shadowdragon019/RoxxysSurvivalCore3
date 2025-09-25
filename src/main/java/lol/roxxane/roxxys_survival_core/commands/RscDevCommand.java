@@ -64,7 +64,25 @@ public class RscDevCommand {
 							spawn_stack(context, stack);
 					return 0;
 				}))
-		);
+		)/*.then(literal("replace_smelting_recipes").executes(context -> {
+			var source = context.getSource();
+			var level = source.getLevel();
+			level.getRecipeManager().getAllRecipesFor(RecipeType.SMELTING).forEach(trycrash(recipe -> {
+				var newRecipe = smelting(recipe.getIngredients().get(0), recipe.category(), recipe.getResultItem(level.registryAccess()).getItem(), 0, 60).group(recipe.getGroup());
+
+				var path = rsc_recipes_command_output
+					.resolve(recipe.getId().getNamespace())
+					.resolve("recipes")
+					.resolve(recipe.getId().getPath());
+				var parent = path.getParent();
+				Files.createDirectories(parent);
+				Files.deleteIfExists(Path.of(parent + ".json"));
+				var writer = new FileWriter(path + ".json");
+				writer.write();
+				writer.close();
+			}));
+			return 0;
+		}))*/;
 	}
 	private static void spawn_stack(CommandContext<CommandSourceStack> context, ItemStack stack) {
 		var source = context.getSource();

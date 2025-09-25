@@ -9,6 +9,8 @@ import lol.roxxane.roxxys_survival_core.configs.ModClientConfig;
 import lol.roxxane.roxxys_survival_core.configs.ModCommonConfig;
 import lol.roxxane.roxxys_survival_core.configs.ModServerConfig;
 import lol.roxxane.roxxys_survival_core.items.ModItems;
+import lol.roxxane.roxxys_survival_core.mob_effects.ModMobEffects;
+import lol.roxxane.roxxys_survival_core.potions.ModPotions;
 import lol.roxxane.roxxys_survival_core.recipes.JeiCraftingRecipe;
 import lol.roxxane.roxxys_survival_core.recipes.ModRecipeSerializers;
 import net.minecraftforge.fml.common.Mod;
@@ -46,8 +48,13 @@ import org.slf4j.Logger;
 // Remove the big iron/copper ore thingies
 // Jei recipe for naming items
 // Prevent zombies/undead from drowning (or turning into drowned)
-// Remove break speed penalty when underwear or climbing
-
+// Arrow signs to point the direction of out for caves
+// Enemies drop iron/diamond tools but they're very damaged (this is to show "Hey! Look at these awesome & better tools!)
+// Make deepslate & ores break faster (shale speed)
+// Add mob spawns
+// Make cave spiders not poison
+// Remove baby mob enemy spawns
+// Remove sticks
 
 // I don't think mobs *have* to have drops. Their purpose is to make the player build a base.
 // Make stuff drop itself without silk touch
@@ -64,6 +71,8 @@ public class Rsc {
         ModBlocks.REGISTRY.register(context.getModEventBus());
         ModItems.REGISTRY.register(context.getModEventBus());
         ModArgumentTypeInfos.REGISTRY.register(context.getModEventBus());
+        ModMobEffects.REGISTRY.register(context.getModEventBus());
+        ModPotions.REGISTRY.register(context.getModEventBus());
         ModRecipeSerializers.register();
         context.registerConfig(ModConfig.Type.SERVER, ModServerConfig.SPEC);
         context.registerConfig(ModConfig.Type.COMMON, ModCommonConfig.SPEC);

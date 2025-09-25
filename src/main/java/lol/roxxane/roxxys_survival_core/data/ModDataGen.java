@@ -16,16 +16,18 @@ public class ModDataGen {
 		ModDataGen.event = event;
 		generator = event.getGenerator();
 		var output = generator.getPackOutput();
-		var existing_file_helper = event.getExistingFileHelper();
+		var existingFileHelper = event.getExistingFileHelper();
 		var provider = event.getLookupProvider();
 		server(new ModItemTagProvider(output, provider,
-			server(new ModBlockTagProvider(output, provider, existing_file_helper)).contentsGetter(),
-			existing_file_helper));
+			server(new ModBlockTagProvider(output, provider, existingFileHelper)).contentsGetter(),
+			existingFileHelper));
 		server(new ModGeneralDataProvider(output, provider));
 		server(new ModRecipeProvider(output));
 		server(new ModLootTableProvider(output));
-		client(new ModBlockStateProvider(output, existing_file_helper));
-		client(new ModItemModelProvider(output, existing_file_helper));
+		server(new ModMobEffectTagsProvider(output, provider, existingFileHelper));
+		server(new ModEntityTypeTagsProvider(output, provider, existingFileHelper));
+		client(new ModBlockStateProvider(output, existingFileHelper));
+		client(new ModItemModelProvider(output, existingFileHelper));
 		client(new ModLanguageProvider(output, "en_us"));
 	}
 	private static <T extends DataProvider> T server(T provider) {
