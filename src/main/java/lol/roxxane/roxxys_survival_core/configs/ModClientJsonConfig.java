@@ -1,7 +1,6 @@
 package lol.roxxane.roxxys_survival_core.configs;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 import lol.roxxane.roxxys_survival_core.util.New;
@@ -37,8 +36,6 @@ public class ModClientJsonConfig {
 	public static final Map<ResourceLocation, List<ItemStack>> TABS_REMOVE_POST = new LinkedHashMap<>();
 	public static final List<ResourceLocation> REMOVE_JEI_CATEGORIES = new ArrayList<>();
 	public static final Map<Item, Integer> BURNABLES = new HashMap<>();
-	//public static final Map<Item, Float> COMPOSTABLES = new HashMap<>();
-	private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 	private static final Path PATH = Path.of(CONFIGDIR.get().toString() + "/roxxys_survival_core_client.json");
 	public static void load() {
 		if (!Files.exists(PATH))
@@ -56,7 +53,7 @@ public class ModClientJsonConfig {
 		}
 	}
 	private static void make_default_file() throws IOException {
-		var data = GSON.toJsonTree(New.map(
+		var data = PRETTY_GSON.toJsonTree(New.map(
 			"enable_tab_manipulation", false,
 			"tabs", New.map(
 				"add_end", New.map(
@@ -129,13 +126,13 @@ public class ModClientJsonConfig {
 			)
 		));
 		var writer = new FileWriter(PATH.toString());
-		writer.write(GSON.toJson(data));
+		writer.write(PRETTY_GSON.toJson(data));
 		writer.close();
 	}
 	private static void read_file() throws FileNotFoundException {
 		var reader = new JsonReader(new FileReader(PATH.toString()));
 		@SuppressWarnings("unchecked") var data =
-			(Map<String, Object>) json_to_normal(GSON.fromJson(reader, JsonObject.class));
+			(Map<String, Object>) json_to_normal(PRETTY_GSON.fromJson(reader, JsonObject.class));
 		TABS_CLEAR.clear();
 		TABS_REMOVE_PRE.clear();
 		TABS_ADD_END.clear();

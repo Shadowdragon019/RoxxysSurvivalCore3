@@ -1,27 +1,18 @@
 package lol.roxxane.roxxys_survival_core.configs;
 
 import com.electronwill.nightconfig.core.UnmodifiableConfig;
-import lol.roxxane.roxxys_survival_core.Rsc;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.common.ForgeConfigSpec.*;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
-import net.minecraftforge.fml.event.config.ModConfigEvent;
 
 import java.util.List;
 import java.util.Map;
 import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 
-@SuppressWarnings({"SameParameterValue", "unused"})
-@EventBusSubscriber(modid = Rsc.ID, bus = EventBusSubscriber.Bus.MOD)
+@SuppressWarnings("unused")
 public class ModClientConfig {
 	private static final Builder BUILDER = new Builder();
 	public static final ForgeConfigSpec SPEC = BUILDER.build();
-	@SubscribeEvent
-	public static void on_reload(ModConfigEvent event) {
-
-	}
 	// Bool
 	private static BooleanValue bool(String name, boolean _default, String... comments) {
 		return BUILDER.comment(comments).define(name, _default);

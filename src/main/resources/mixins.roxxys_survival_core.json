@@ -8,6 +8,8 @@
 	"refmap": "mixins.roxxys_survival_core.refmap.json",
 	"client": [
 		"default_settings.OptionsMixin",
+		"minimal_f3.DebugScreenOverlayMixin",
+		"minimal_f3.GuiMixin",
 		"mining_cooldown.MultiPlayerGameModeMixin"
 	],
 	"mixins": [

@@ -25,37 +25,32 @@ import org.slf4j.Logger;
 // Burn recipes (fire)
 // Smelt recipes (lava)
 // Recovery compass on death (on items back from grave remove it from inventory)
-// Make sheep/mobs more durable
 // Merge the Nether into the overworld (have it be at the very bottom. get diamonds there!)
 // Deal with creepers being gone
 // Remove sweet berries (or make them take way longer to grow & spread, currently they give way too much bang for buck)
-// Make wolves spawn wherever farm animals spawn so you have to protect them
-// Make wolves attack farm animals
-// Make mobs spawn closer to the player so at night they're forced to fight/interact with them
 // Custom structures~
 // Remove biomes I don't want (look at snowcapped!)
 // Make phantom naturally spawn at night? (I like the idea but I'm not sure if it ignores too much of the players defenses since it can just fly in if you're not completely covered. Hmm, requires no light where the player is?)
 // Iron takes more T I M E to make
 // Crops take time to break (hoe is efficient!)
-// Copper is used instead of emeralds
-// Make leaves craft into saplings
-// Ores drop themselves
-// Disable XP
-// Make rabbits spawn everywhereh
 // Make black dye obtainable
-// Make cats naturally spawn
 // Merge cod/salmon (I wanna merge them into one entity if possible~)
 // Remove the big iron/copper ore thingies
 // Jei recipe for naming items
 // Prevent zombies/undead from drowning (or turning into drowned)
 // Arrow signs to point the direction of out for caves
 // Enemies drop iron/diamond tools but they're very damaged (this is to show "Hey! Look at these awesome & better tools!)
-// Make deepslate & ores break faster (shale speed)
-// Add mob spawns
 // Remove baby mob enemy spawns
-// Remove sticks
 // Split tab config into multiple different files
 // Add option to remove item from tabs by type & ignoring nbt
+
+// Remove respawn totem in favor of beds. Or just give the player access to respawn totems sooner?
+// I find it annoying how I'm incentivized to run around searching for a totem. Setting your respawn should be easily obtainable but not spammable. Make it craftable?
+// Right click crafting table in air to open gui
+// Merge mining tools into a pickaxe (need to make it support axe & shovel thingies)
+// Sawmill recipes for 1-1 planks/stone
+// Rightclick with sawmill to open gui!
+// Make horses only require armor to ride
 
 // I don't think mobs *have* to have drops. Their purpose is to make the player build a base.
 // Make stuff drop itself without silk touch

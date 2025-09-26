@@ -2,6 +2,7 @@ package lol.roxxane.roxxys_survival_core.events;
 
 import lol.roxxane.roxxys_survival_core.Rsc;
 import lol.roxxane.roxxys_survival_core.commands.RscCommand;
+import lol.roxxane.roxxys_survival_core.configs.F3ScreenConfig;
 import lol.roxxane.roxxys_survival_core.configs.ModClientJsonConfig;
 import lol.roxxane.roxxys_survival_core.items.ModItems;
 import lol.roxxane.roxxys_survival_core.tags.ModEntityTypeTags;
@@ -91,6 +92,7 @@ public class ModForgeEvents {
 	@SubscribeEvent
 	public static void reload(AddReloadListenerEvent event) {
 		ModClientJsonConfig.load();
+		F3ScreenConfig.load();
 	}
 	@SubscribeEvent
 	public static void furnaceFuelBurnTime(FurnaceFuelBurnTimeEvent event) {

@@ -8,6 +8,8 @@ import com.mojang.brigadier.context.CommandContext;
 import lol.roxxane.roxxys_survival_core.Rsc;
 import lol.roxxane.roxxys_survival_core.commands.recipes.RscRecipesDumpCommand;
 import lol.roxxane.roxxys_survival_core.commands.recipes.RscRecipesRemoveCommand;
+import lol.roxxane.roxxys_survival_core.configs.F3ScreenConfig;
+import lol.roxxane.roxxys_survival_core.configs.ModClientJsonConfig;
 import lol.roxxane.roxxys_survival_core.util.Parsing;
 import net.minecraft.commands.CommandBuildContext;
 import net.minecraft.commands.CommandSourceStack;
@@ -67,6 +69,11 @@ public class RscCommand {
 		rsc.then(inventory);
 		rsc.then(recipes);
 		rsc.then(dev);
+		rsc.then(literal("reload").executes($ -> {
+			ModClientJsonConfig.load();
+			F3ScreenConfig.load();
+			return 0;
+		}));
 		dispatcher.register(rsc);
 	}
 	private static int send_to_chat(CommandContext<CommandSourceStack> context, boolean inventory, boolean item) {
