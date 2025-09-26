@@ -2,6 +2,7 @@
   "values": [
     "roxxys_survival_core:witch_slowness",
     "roxxys_survival_core:witch_weakness",
-    "roxxys_survival_core:witch_mining_fatigue"
+    "roxxys_survival_core:witch_mining_fatigue",
+    "roxxys_survival_core:witch_instant_damage"
   ]
 }

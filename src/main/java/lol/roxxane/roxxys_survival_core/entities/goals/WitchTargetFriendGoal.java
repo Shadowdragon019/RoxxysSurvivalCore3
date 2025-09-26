@@ -12,7 +12,7 @@ public class WitchTargetFriendGoal extends NearestAttackableTargetGoal<LivingEnt
 	private static final int DEFAULT_COOLDOWN = 200;
 	private int cooldown = 0;
 	public WitchTargetFriendGoal(Mob mob) {
-		super(mob, LivingEntity.class, 10, true, false, target -> {
+		super(mob, LivingEntity.class, 5, true, false, target -> {
 			if (target == null) return false;
 			return requireNonNull(ENTITY_TYPES.tags()).getTag(WITCH_FRIENDS).contains(target.getType());
 		});

@@ -55,6 +55,8 @@ import org.slf4j.Logger;
 // Make cave spiders not poison
 // Remove baby mob enemy spawns
 // Remove sticks
+// Split tab config into multiple different files
+// Add option to remove item from tabs by type & ignoring nbt
 
 // I don't think mobs *have* to have drops. Their purpose is to make the player build a base.
 // Make stuff drop itself without silk touch

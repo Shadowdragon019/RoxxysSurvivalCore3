@@ -28,6 +28,8 @@ public class ModPotions {
 	public static final RegistryObject<Potion> WITCH_INVISIBILITY = register("witch_invisibility", ModMobEffects.WITCH_INVISIBILITY, 1200, 0);
 	public static final RegistryObject<Potion> WITCH_FIRE_RESISTANCE = register("witch_fire_resistance", ModMobEffects.WITCH_FIRE_RESISTANCE, 1200, 0);
 	public static final RegistryObject<Potion> WITCH_WATER_BREATHING = register("witch_water_breathing", ModMobEffects.WITCH_WATER_BREATHING, 1200, 0);
+	public static final RegistryObject<Potion> WITCH_INSTANT_DAMAGE = register("witch_instant_damage", ModMobEffects.WITCH_INSTANT_DAMAGE, 1, 0);
+	public static final RegistryObject<Potion> WITCH_INSTANT_HEALTH = register("witch_instant_health", ModMobEffects.WITCH_INSTANT_HEALTH, 1, 0);
 	private static RegistryObject<Potion> register(String path, Supplier<MobEffect> effect, int duration, int level) {
 		return REGISTRY.register(path, () -> new Potion(new MobEffectInstance(effect.get(), duration, level)));
 	}

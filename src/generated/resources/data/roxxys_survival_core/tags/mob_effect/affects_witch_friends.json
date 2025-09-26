@@ -7,6 +7,7 @@
     "roxxys_survival_core:witch_resistance",
     "roxxys_survival_core:witch_invisibility",
     "roxxys_survival_core:witch_fire_resistance",
-    "roxxys_survival_core:witch_water_breathing"
+    "roxxys_survival_core:witch_water_breathing",
+    "roxxys_survival_core:witch_instant_health"
   ]
 }

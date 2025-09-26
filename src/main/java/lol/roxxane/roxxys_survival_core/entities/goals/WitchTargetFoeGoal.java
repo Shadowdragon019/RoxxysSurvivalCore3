@@ -11,7 +11,7 @@ import static net.minecraftforge.registries.ForgeRegistries.ENTITY_TYPES;
 public class WitchTargetFoeGoal extends NearestAttackableTargetGoal<LivingEntity> {
 	private boolean canAttack = true;
 	public WitchTargetFoeGoal(Mob mob) {
-		super(mob, LivingEntity.class, 10, true, false, target -> {
+		super(mob, LivingEntity.class, 5, true, false, target -> {
 			if (target == null) return false;
 			return requireNonNull(ENTITY_TYPES.tags()).getTag(WITCH_FOES).contains(target.getType());
 		});

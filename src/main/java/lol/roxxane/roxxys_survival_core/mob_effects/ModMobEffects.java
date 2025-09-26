@@ -40,7 +40,11 @@ public class ModMobEffects {
 	public static final RegistryObject<MobEffect> WITCH_FIRE_RESISTANCE =
 		register("witch_fire_resistance", new ModMobEffect(BENEFICIAL, 16750848));
 	public static final RegistryObject<MobEffect> WITCH_WATER_BREATHING =
-		register("witch_water_breathing", new ModMobEffect(BENEFICIAL, 10017472)); //CHECK
+		register("witch_water_breathing", new ModMobEffect(BENEFICIAL, 10017472));
+	public static final RegistryObject<MobEffect> WITCH_INSTANT_DAMAGE =
+		register("witch_instant_damage", new ModInstantMobEffect(HARMFUL, 11101546));
+	public static final RegistryObject<MobEffect> WITCH_INSTANT_HEALTH =
+		register("witch_instant_health", new ModInstantMobEffect(BENEFICIAL, 16262179));
 	private static <T extends MobEffect> RegistryObject<T> register(String path, T effect) {
 		return REGISTRY.register(path, () -> effect);
 	}
