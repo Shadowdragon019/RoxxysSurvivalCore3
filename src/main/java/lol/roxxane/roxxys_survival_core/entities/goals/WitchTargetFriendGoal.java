@@ -9,7 +9,6 @@ import static lol.roxxane.roxxys_survival_core.tags.ModEntityTypeTags.WITCH_FRIE
 import static net.minecraftforge.registries.ForgeRegistries.ENTITY_TYPES;
 
 public class WitchTargetFriendGoal extends NearestAttackableTargetGoal<LivingEntity> {
-	private static final int DEFAULT_COOLDOWN = 200;
 	private int cooldown = 0;
 	public WitchTargetFriendGoal(Mob mob) {
 		super(mob, LivingEntity.class, 5, true, false, target -> {

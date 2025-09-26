@@ -12,6 +12,7 @@
 	],
 	"mixins": [
 		"carve_pumpkins_with_swords.PumpkinBlockMixin",
+		"cave_spiders_dont_poison.CaveSpiderMixin",
 		"change_hive_drops.BeehiveBlockMixin",
 		"daylight_detector_is_stone.BlocksMixin",
 		"disable_durability.ItemStackMixin",

@@ -52,7 +52,6 @@ import org.slf4j.Logger;
 // Enemies drop iron/diamond tools but they're very damaged (this is to show "Hey! Look at these awesome & better tools!)
 // Make deepslate & ores break faster (shale speed)
 // Add mob spawns
-// Make cave spiders not poison
 // Remove baby mob enemy spawns
 // Remove sticks
 // Split tab config into multiple different files
@@ -60,6 +59,7 @@ import org.slf4j.Logger;
 
 // I don't think mobs *have* to have drops. Their purpose is to make the player build a base.
 // Make stuff drop itself without silk touch
+// Make witch prioratize non-witch mobs if possible
 
 /// TODO: Output count for {@link JeiCraftingRecipe}
 @SuppressWarnings("unused")
