@@ -23,6 +23,7 @@
 		"milk_bucket_does_not_remove_effects.MilkBucketItemMixin",
 		"modify_firework_star_recipe.FireworkStarRecipeMixin",
 		"name_tag_can_rename_items.NameTagItemMixin",
+		"pickaxes_act_as_axe_and_shovels.PickaxeItemMixin",
 		"place_respawn_totem_at_worldgen.SimpleBlockFeatureMixin",
 		"remove_xp.ExperienceOrbMixin",
 		"respawn_totem_functionality.PlayerMixin",

@@ -47,14 +47,18 @@ import org.slf4j.Logger;
 // Remove respawn totem in favor of beds. Or just give the player access to respawn totems sooner?
 // I find it annoying how I'm incentivized to run around searching for a totem. Setting your respawn should be easily obtainable but not spammable. Make it craftable?
 // Right click crafting table in air to open gui
-// Merge mining tools into a pickaxe (need to make it support axe & shovel thingies)
 // Sawmill recipes for 1-1 planks/stone
 // Rightclick with sawmill to open gui!
 // Make horses only require armor to ride
+// Disable fire tick by default
+// You slowly regen health over time. Getting hurt by an enemy causes bleeding & stops the regen.
 
 // I don't think mobs *have* to have drops. Their purpose is to make the player build a base.
 // Make stuff drop itself without silk touch
 // Make witch prioratize non-witch mobs if possible
+// Spiders & witches should also burn i nday
+// Half mob health
+// Make daylight cure witch potions
 
 /// TODO: Output count for {@link JeiCraftingRecipe}
 @SuppressWarnings("unused")
