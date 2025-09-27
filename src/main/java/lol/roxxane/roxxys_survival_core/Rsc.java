@@ -54,11 +54,19 @@ import org.slf4j.Logger;
 // You slowly regen health over time. Getting hurt by an enemy causes bleeding & stops the regen.
 
 // I don't think mobs *have* to have drops. Their purpose is to make the player build a base.
-// Make stuff drop itself without silk touch
 // Make witch prioratize non-witch mobs if possible
 // Spiders & witches should also burn i nday
 // Half mob health
 // Make daylight cure witch potions
+// Remove attack delay
+// Reduce damage pickaxes do?
+// Make furnaces not reduce fuel if not smelting anything
+// Make glass & vines & ferns & general plant things drop themselves
+// Make amethyst stuff dorp iteslf
+// Amethyst crafted stuff use glass
+// Reduce use of furances as much as possible
+// Make path blocks able to go under fence gates
+// Make sheep drop wool more commonly
 
 /// TODO: Output count for {@link JeiCraftingRecipe}
 @SuppressWarnings("unused")

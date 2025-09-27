@@ -18,6 +18,7 @@
 		"change_hive_drops.BeehiveBlockMixin",
 		"daylight_detector_is_stone.BlocksMixin",
 		"disable_durability.ItemStackMixin",
+		"explosions_drop_all_blocks.ExplosionConditionMixin",
 		"iframe_changes.LivingEntityMixin",
 		"ingredients_can_have_air_items.ShapeRecipeMixin",
 		"milk_bucket_does_not_remove_effects.MilkBucketItemMixin",
