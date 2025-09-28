@@ -30,6 +30,7 @@
 		"respawn_totem_functionality.PlayerMixin",
 		"sheep_naturally_drop_wool.SheepMixin",
 		"slime_changes.SlimeMixin",
+		"stone_cutting_merge_recipes.StoneCuttingRecipeCategoryMixin",
 		"wasd_controllable_strider.StriderMixin",
 		"water_and_floating_dont_slow_down_dig_speed.PlayerMixin",
 		"witch_changes.WitchMixin",

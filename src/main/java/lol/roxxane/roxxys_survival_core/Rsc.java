@@ -13,6 +13,7 @@ import lol.roxxane.roxxys_survival_core.mob_effects.ModMobEffects;
 import lol.roxxane.roxxys_survival_core.potions.ModPotions;
 import lol.roxxane.roxxys_survival_core.recipes.JeiCraftingRecipe;
 import lol.roxxane.roxxys_survival_core.recipes.ModRecipeSerializers;
+import lol.roxxane.roxxys_survival_core.recipes.ModRecipeTypes;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -55,18 +56,20 @@ import org.slf4j.Logger;
 
 // I don't think mobs *have* to have drops. Their purpose is to make the player build a base.
 // Make witch prioratize non-witch mobs if possible
-// Spiders & witches should also burn i nday
+// Spiders & witches should also burn in day
 // Half mob health
 // Make daylight cure witch potions
 // Remove attack delay
 // Reduce damage pickaxes do?
 // Make furnaces not reduce fuel if not smelting anything
-// Make glass & vines & ferns & general plant things drop themselves
-// Make amethyst stuff dorp iteslf
-// Amethyst crafted stuff use glass
 // Reduce use of furances as much as possible
 // Make path blocks able to go under fence gates
 // Make sheep drop wool more commonly
+// Make rooted dirt & hanging vines replecatable
+
+// Throw in fire/lava recipes
+// Make ores spawn in shale too
+// Replace smooth shale with shal
 
 /// TODO: Output count for {@link JeiCraftingRecipe}
 @SuppressWarnings("unused")
@@ -82,6 +85,7 @@ public class Rsc {
         ModArgumentTypeInfos.REGISTRY.register(context.getModEventBus());
         ModMobEffects.REGISTRY.register(context.getModEventBus());
         ModPotions.REGISTRY.register(context.getModEventBus());
+        ModRecipeTypes.REGISTRY.register(context.getModEventBus());
         ModRecipeSerializers.register();
         context.registerConfig(ModConfig.Type.SERVER, ModServerConfig.SPEC);
         context.registerConfig(ModConfig.Type.COMMON, ModCommonConfig.SPEC);
