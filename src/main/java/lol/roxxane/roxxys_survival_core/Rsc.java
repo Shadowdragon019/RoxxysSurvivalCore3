@@ -12,6 +12,7 @@ import lol.roxxane.roxxys_survival_core.items.ModItems;
 import lol.roxxane.roxxys_survival_core.mob_effects.ModMobEffects;
 import lol.roxxane.roxxys_survival_core.potions.ModPotions;
 import lol.roxxane.roxxys_survival_core.recipes.JeiCraftingRecipe;
+import lol.roxxane.roxxys_survival_core.recipes.JeiMillingRecipe;
 import lol.roxxane.roxxys_survival_core.recipes.ModRecipeSerializers;
 import lol.roxxane.roxxys_survival_core.recipes.ModRecipeTypes;
 import net.minecraftforge.fml.common.Mod;
@@ -54,11 +55,8 @@ import org.slf4j.Logger;
 // Disable fire tick by default
 // You slowly regen health over time. Getting hurt by an enemy causes bleeding & stops the regen.
 
-// I don't think mobs *have* to have drops. Their purpose is to make the player build a base.
-// Make witch prioratize non-witch mobs if possible
-// Spiders & witches should also burn in day
+// Spiders should also burn in day
 // Half mob health
-// Make daylight cure witch potions
 // Remove attack delay
 // Reduce damage pickaxes do?
 // Make furnaces not reduce fuel if not smelting anything
@@ -66,12 +64,27 @@ import org.slf4j.Logger;
 // Make path blocks able to go under fence gates
 // Make sheep drop wool more commonly
 // Make rooted dirt & hanging vines replecatable
+// Make dyeing recipes consistent with input
+// Merge all dyeing recipes. Make them all 8x variants
 
 // Throw in fire/lava recipes
 // Make ores spawn in shale too
-// Replace smooth shale with shal
+// Replace smooth shale with cobble
+// The player can mine all blocks, pickaxes just speed things up
+// Add way to make fire. Just right-click with iron ingots
+// Banner pattern recipes
+// When animals are leaded they follow their owner
+// Make all blocks have 1.5 dtime
+// Increase block & entity interaction range to like 5
+// Add food for sprinting/jumping effects! (movement speed, jump height, block interaction range, item pickup range, fire proof, water breathing, mining speed)
+// Right-click path blocks to turn them into dirt again
+// Podzol, grass blocks, mycelium, etc craft into dirt
+// Seeds from grass & ferns!
+// Path blocks drop themselves
+// Make rain less common
 
 /// TODO: Output count for {@link JeiCraftingRecipe}
+/// TODO: Output support for {@link JeiMillingRecipe} (is needed)
 @SuppressWarnings("unused")
 @Mod(Rsc.ID)
 public class Rsc {

@@ -16,6 +16,7 @@
 		"carve_pumpkins_with_swords.PumpkinBlockMixin",
 		"cave_spiders_dont_poison.CaveSpiderMixin",
 		"change_hive_drops.BeehiveBlockMixin",
+		"constant_destroy_time.BlockBehaviourMixin",
 		"daylight_detector_is_stone.BlocksMixin",
 		"disable_durability.ItemStackMixin",
 		"explosions_drop_all_blocks.ExplosionConditionMixin",
@@ -32,12 +33,6 @@
 		"slime_changes.SlimeMixin",
 		"stone_cutting_merge_recipes.StoneCuttingRecipeCategoryMixin",
 		"wasd_controllable_strider.StriderMixin",
-		"water_and_floating_dont_slow_down_dig_speed.PlayerMixin",
-		"witch_changes.WitchMixin",
-		"witch_changes.witch_fire_resistance.LivingEntityMixin",
-		"witch_changes.witch_invisibility.LivingEntityMixin",
-		"witch_changes.witch_jump_boost.LivingEntityMixin",
-		"witch_changes.witch_resistance.LivingEntityMixin",
-		"witch_changes.witch_water_breathing.MobEffectUtilMixin"
+		"water_and_floating_dont_slow_down_dig_speed.PlayerMixin"
 	]
 }

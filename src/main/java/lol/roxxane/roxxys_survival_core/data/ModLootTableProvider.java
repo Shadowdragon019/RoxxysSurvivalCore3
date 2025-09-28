@@ -1,7 +1,6 @@
 package lol.roxxane.roxxys_survival_core.data;
 
 import lol.roxxane.roxxys_survival_core.blocks.ModBlocks;
-import lol.roxxane.roxxys_survival_core.items.ModItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.data.loot.LootTableProvider;
@@ -25,7 +24,6 @@ public class ModLootTableProvider extends LootTableProvider {
 			super(Set.of(), FeatureFlags.REGISTRY.allFlags());
 		}
 		protected void generate() {
-			dropOther(ModBlocks.FLINT.get(), ModItems.FLINT.get());
 			add(ModBlocks.OAK_RESPAWN_TOTEM.get(), noDrop());
 		}
 		public Iterable<Block> getKnownBlocks() {

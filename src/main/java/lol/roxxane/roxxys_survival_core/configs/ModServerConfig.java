@@ -49,6 +49,7 @@ public class ModServerConfig {
 			}
 			return false;
 		});
+	private static final ConfigValue<Double> _CONSTANT_DESTROY_TIME = _double("constant_destroy_time", 1.5, -1);
 	public static final ForgeConfigSpec SPEC = BUILDER.build();
 	public static int survival_mining_cooldown = 0;
 	public static int creative_mining_cooldown = 0;
@@ -58,6 +59,7 @@ public class ModServerConfig {
 	public static boolean disable_durability = false;
 	public static double consistent_slime_damage = -1;
 	public static Path rsc_recipes_command_output = Path.of(GAMEDIR.get() + "/rsc_output/recipes");
+	public static double constant_destroy_time = 1.5f;
 	@SubscribeEvent
 	public static void on_reload(ModConfigEvent event) {
 		try {
@@ -72,6 +74,7 @@ public class ModServerConfig {
 			disable_durability = _DISABLE_DURABILITY.get();
 			consistent_slime_damage = _CONSISTENT_SLIME_DAMAGE.get();
 			rsc_recipes_command_output = Path.of(GAMEDIR.get() + "/" + _RSC_RECIPES_COMMAND_OUTPUT.get());
+			constant_destroy_time = _CONSTANT_DESTROY_TIME.get();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

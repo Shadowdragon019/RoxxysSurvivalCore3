@@ -14,8 +14,6 @@ import java.util.function.Function;
 
 public class ModBlocks {
 	public static final DeferredRegister<Block> REGISTRY = DeferredRegister.create(ForgeRegistries.BLOCKS, Rsc.ID);
-	public static final RegistryObject<FlintBlock> FLINT =
-		block("flint", p -> new FlintBlock(p.instabreak().mapColor(MapColor.STONE)));
 	public static final RegistryObject<RespawnTotemBlock> OAK_RESPAWN_TOTEM =
 		block("oak_respawn_totem", p -> new RespawnTotemBlock(p.mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS).sound(SoundType.WOOD).strength(100, 1200)));
 	private static <T extends Block> RegistryObject<T> block(String path, Function<Properties, T> function) {

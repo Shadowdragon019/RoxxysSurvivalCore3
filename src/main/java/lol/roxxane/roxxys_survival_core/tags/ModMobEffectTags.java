@@ -7,8 +7,6 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.effect.MobEffect;
 
 public class ModMobEffectTags {
-	public static final TagKey<MobEffect> AFFECTS_WITCH_FRIENDS = mod("affects_witch_friends");
-	public static final TagKey<MobEffect> AFFECTS_WITCH_FOES = mod("affects_witch_foes");
 	public static TagKey<MobEffect> mc(String path) {
 		return create(Id.mc(path));
 	}

@@ -14,17 +14,12 @@ import javax.annotation.Nullable;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Supplier;
 
-import static lol.roxxane.roxxys_survival_core.mob_effects.ModMobEffects.*;
-import static lol.roxxane.roxxys_survival_core.tags.ModMobEffectTags.AFFECTS_WITCH_FOES;
-import static lol.roxxane.roxxys_survival_core.tags.ModMobEffectTags.AFFECTS_WITCH_FRIENDS;
-
 public class ModMobEffectTagsProvider extends TagsProvider<MobEffect> {
 	public ModMobEffectTagsProvider(PackOutput output, CompletableFuture<Provider> provider, @Nullable ExistingFileHelper existingFileHelper) {
 		super(output, Registries.MOB_EFFECT, provider, Rsc.ID, existingFileHelper);
 	}
 	protected void addTags(Provider provider) {
-		tags(AFFECTS_WITCH_FOES, WITCH_SLOWNESS, WITCH_WEAKNESS, WITCH_MINING_FATIGUE, WITCH_INSTANT_DAMAGE);
-		tags(AFFECTS_WITCH_FRIENDS, WITCH_SPEED, WITCH_STRENGTH, WITCH_REGENERATION, WITCH_JUMP_BOOST, WITCH_RESISTANCE, WITCH_INVISIBILITY, WITCH_FIRE_RESISTANCE, WITCH_WATER_BREATHING, WITCH_INSTANT_HEALTH);
+
 	}
 	@SafeVarargs protected final TagAppender<MobEffect> tags(TagKey<MobEffect> tagKey, Supplier<MobEffect>... effects) {
 		var tag = tag(tagKey);

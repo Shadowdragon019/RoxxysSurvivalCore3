@@ -1,11 +1,9 @@
 package lol.roxxane.roxxys_survival_core.events;
 
 import lol.roxxane.roxxys_survival_core.Rsc;
-import lol.roxxane.roxxys_survival_core.items.ModItems;
 import lol.roxxane.roxxys_survival_core.packets.ModPacketHandler;
 import lol.roxxane.roxxys_survival_core.util.Id;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -15,7 +13,6 @@ import java.util.ArrayList;
 
 import static lol.roxxane.roxxys_survival_core.configs.ModClientJsonConfig.*;
 import static net.minecraft.world.item.CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS;
-import static net.minecraft.world.item.CreativeModeTabs.INGREDIENTS;
 import static net.minecraft.world.item.CreativeModeTabs.SEARCH;
 
 @EventBusSubscriber(modid = Rsc.ID, bus = EventBusSubscriber.Bus.MOD)
@@ -25,9 +22,6 @@ public class ModModEvents {
 		var current_tab = event.getTabKey();
 		var entries = event.getEntries();
 		var is_search = current_tab.equals(SEARCH);
-		if (current_tab.equals(INGREDIENTS) || is_search)
-			entries.putAfter(Items.FLINT.getDefaultInstance(), ModItems.FLINT.get().getDefaultInstance(),
-				PARENT_AND_SEARCH_TABS);
 		if (enable_tab_manipulation) {
 			for (var tab : TABS_CLEAR)
 				if (tab.equals(current_tab.location())) {
