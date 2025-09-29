@@ -21,6 +21,7 @@
 		"disable_durability.ItemStackMixin",
 		"explosions_drop_all_blocks.ExplosionConditionMixin",
 		"iframe_changes.LivingEntityMixin",
+		"increase_player_pickup_range.PlayerMixin",
 		"ingredients_can_have_air_items.ShapeRecipeMixin",
 		"milk_bucket_does_not_remove_effects.MilkBucketItemMixin",
 		"modify_firework_star_recipe.FireworkStarRecipeMixin",

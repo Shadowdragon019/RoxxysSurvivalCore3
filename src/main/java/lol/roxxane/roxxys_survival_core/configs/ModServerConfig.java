@@ -18,6 +18,7 @@ import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 
 import static lol.roxxane.roxxys_survival_core.util.New.config;
+import static lol.roxxane.roxxys_survival_core.util.fuck_off_exceptions.FuckOffExceptions.trylog;
 import static net.minecraftforge.fml.loading.FMLPaths.GAMEDIR;
 
 @SuppressWarnings({"SameParameterValue", "unused"})
@@ -62,22 +63,20 @@ public class ModServerConfig {
 	public static double constant_destroy_time = 0.25f;
 	@SubscribeEvent
 	public static void on_reload(ModConfigEvent event) {
-		try {
-			// TODO: Figure out why this is being weird :/
-			survival_mining_cooldown = _SURVIVAL_MINING_COOLDOWN.get();
-			creative_mining_cooldown = _CREATIVE_MINING_COOLDOWN.get();
-			override_iframe_functionality = _OVERRIDE_IFRAME_FUNCTIONALITY.get();
-			default_iframes = _DEFAULT_IFRAMES.get();
+		// TODO: Figure out why this is being weird :/
+		trylog(() -> survival_mining_cooldown = _SURVIVAL_MINING_COOLDOWN.get());
+		trylog(() -> creative_mining_cooldown = _CREATIVE_MINING_COOLDOWN.get());
+		trylog(() -> override_iframe_functionality = _OVERRIDE_IFRAME_FUNCTIONALITY.get());
+		trylog(() -> default_iframes = _DEFAULT_IFRAMES.get());
+		trylog(() -> {
 			DAMAGE_TYPE_IFRAMES.clear();
-			_DAMAGE_TYPE_IFRAMES.get().valueMap().forEach((key, value) ->
-				DAMAGE_TYPE_IFRAMES.put(Id.of(key), (int) value));
-			disable_durability = _DISABLE_DURABILITY.get();
-			consistent_slime_damage = _CONSISTENT_SLIME_DAMAGE.get();
-			rsc_recipes_command_output = Path.of(GAMEDIR.get() + "/" + _RSC_RECIPES_COMMAND_OUTPUT.get());
-			constant_destroy_time = _CONSTANT_DESTROY_TIME.get();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+			_DAMAGE_TYPE_IFRAMES.get().valueMap()
+				.forEach((key, value) -> DAMAGE_TYPE_IFRAMES.put(Id.of(key), (int) value));
+		});
+		trylog(() -> disable_durability = _DISABLE_DURABILITY.get());
+		trylog(() -> consistent_slime_damage = _CONSISTENT_SLIME_DAMAGE.get());
+		trylog(() -> rsc_recipes_command_output = Path.of(GAMEDIR.get() + "/" + _RSC_RECIPES_COMMAND_OUTPUT.get()));
+		trylog(() -> constant_destroy_time = _CONSTANT_DESTROY_TIME.get());
 	}
 	// Bool
 	private static BooleanValue bool(String name, boolean _default, String... comments) {
