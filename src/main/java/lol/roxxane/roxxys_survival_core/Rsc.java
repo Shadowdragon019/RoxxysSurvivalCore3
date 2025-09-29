@@ -89,7 +89,6 @@ import org.slf4j.Logger;
 // Make leaves break faster (also make torches break instantly, also just make a thing to set individual block break speeds)
 // Output count for JeiCraftingRecipe
 // Output support for JeiMillingRecipe (is needed)
-// Increase item pickup range
 @SuppressWarnings("unused")
 @Mod(Rsc.ID)
 public class Rsc {

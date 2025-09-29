@@ -18,6 +18,8 @@
 		"change_hive_drops.BeehiveBlockMixin",
 		"constant_destroy_time.BlockBehaviourMixin",
 		"daylight_detector_is_stone.BlocksMixin",
+		"dirt_path_changes.DirtPathBlockMixin",
+		"dirt_path_changes.ShovelItemMixin",
 		"disable_durability.ItemStackMixin",
 		"explosions_drop_all_blocks.ExplosionConditionMixin",
 		"iframe_changes.LivingEntityMixin",
