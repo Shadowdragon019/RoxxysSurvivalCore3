@@ -49,8 +49,6 @@ import org.slf4j.Logger;
 // Reduce damage pickaxes do?
 // Make furnaces not reduce fuel if not smelting anything
 // Reduce use of furances as much as possible
-// Make path blocks able to go under any block
-// Make sheep drop wool more commonly
 // Make rooted dirt & hanging vines replecatable
 // Make dyeing recipes consistent with input
 // Merge all dyeing recipes. Make them all 8x variants
@@ -63,7 +61,6 @@ import org.slf4j.Logger;
 // When animals are leaded they follow their owner
 // Increase block & entity interaction range to like 5
 // Add food for sprinting/jumping effects! (movement speed, jump height, block interaction range, item pickup range, fire proof, water breathing, mining speed)
-// Right-click path blocks to turn them into dirt
 // Podzol, grass blocks, mycelium, etc craft into dirt
 // Seeds from grass & ferns!
 // Path blocks drop themselves
