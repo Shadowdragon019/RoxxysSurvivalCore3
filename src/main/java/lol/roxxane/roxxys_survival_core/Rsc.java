@@ -11,8 +11,6 @@ import lol.roxxane.roxxys_survival_core.configs.ModServerConfig;
 import lol.roxxane.roxxys_survival_core.items.ModItems;
 import lol.roxxane.roxxys_survival_core.mob_effects.ModMobEffects;
 import lol.roxxane.roxxys_survival_core.potions.ModPotions;
-import lol.roxxane.roxxys_survival_core.recipes.JeiCraftingRecipe;
-import lol.roxxane.roxxys_survival_core.recipes.JeiMillingRecipe;
 import lol.roxxane.roxxys_survival_core.recipes.ModRecipeSerializers;
 import lol.roxxane.roxxys_survival_core.recipes.ModRecipeTypes;
 import net.minecraftforge.fml.common.Mod;
@@ -22,34 +20,24 @@ import org.slf4j.Logger;
 
 // NOTE: "search" updates requires a world reload
 // Remove sprinting but keep swimming
-// Mess with food properties
 // Kelp block (that smelts into a dried kelp block)
-// Burn recipes (fire)
-// Smelt recipes (lava)
 // Recovery compass on death (on items back from grave remove it from inventory)
 // Merge the Nether into the overworld (have it be at the very bottom. get diamonds there!)
-// Deal with creepers being gone
 // Remove sweet berries (or make them take way longer to grow & spread, currently they give way too much bang for buck)
-// Custom structures~
 // Remove biomes I don't want (look at snowcapped!)
 // Make phantom naturally spawn at night? (I like the idea but I'm not sure if it ignores too much of the players defenses since it can just fly in if you're not completely covered. Hmm, requires no light where the player is?)
-// Iron takes more T I M E to make
 // Crops take time to break (hoe is efficient!)
-// Make black dye obtainable
-// Merge cod/salmon (I wanna merge them into one entity if possible~)
 // Remove the big iron/copper ore thingies
 // Jei recipe for naming items
 // Prevent zombies/undead from drowning (or turning into drowned)
 // Arrow signs to point the direction of out for caves
 // Enemies drop iron/diamond tools but they're very damaged (this is to show "Hey! Look at these awesome & better tools!)
-// Remove baby mob enemy spawns
 // Split tab config into multiple different files
 // Add option to remove item from tabs by type & ignoring nbt
 
 // Remove respawn totem in favor of beds. Or just give the player access to respawn totems sooner?
 // I find it annoying how I'm incentivized to run around searching for a totem. Setting your respawn should be easily obtainable but not spammable. Make it craftable?
 // Right click crafting table in air to open gui
-// Sawmill recipes for 1-1 planks/stone
 // Rightclick with sawmill to open gui!
 // Make horses only require armor to ride
 // Disable fire tick by default
@@ -61,30 +49,47 @@ import org.slf4j.Logger;
 // Reduce damage pickaxes do?
 // Make furnaces not reduce fuel if not smelting anything
 // Reduce use of furances as much as possible
-// Make path blocks able to go under fence gates
+// Make path blocks able to go under any block
 // Make sheep drop wool more commonly
 // Make rooted dirt & hanging vines replecatable
 // Make dyeing recipes consistent with input
 // Merge all dyeing recipes. Make them all 8x variants
 
-// Throw in fire/lava recipes
 // Make ores spawn in shale too
 // Replace smooth shale with cobble
 // The player can mine all blocks, pickaxes just speed things up
 // Add way to make fire. Just right-click with iron ingots
 // Banner pattern recipes
 // When animals are leaded they follow their owner
-// Make all blocks have 1.5 dtime
 // Increase block & entity interaction range to like 5
 // Add food for sprinting/jumping effects! (movement speed, jump height, block interaction range, item pickup range, fire proof, water breathing, mining speed)
-// Right-click path blocks to turn them into dirt again
+// Right-click path blocks to turn them into dirt
 // Podzol, grass blocks, mycelium, etc craft into dirt
 // Seeds from grass & ferns!
 // Path blocks drop themselves
 // Make rain less common
-
-/// TODO: Output count for {@link JeiCraftingRecipe}
-/// TODO: Output support for {@link JeiMillingRecipe} (is needed)
+// Merge dye stuffs?
+// Add stuff I removed ike horses, pumpkins, animals, cake, etc for creativity
+// Horses get effects from eaten food
+// Give horse, minecarts, & boats speed buffs (most for minecarts, I want the highest effort to give the most)
+// Make minecarts get launched when they go off the rails
+// Make horses not throw the player off in water
+// More horses let anyone ride them
+// Make desert prdy
+// Retexture iron horse armor to chain mail
+// Make horse armor obtainable
+// Make pets/tamed/named pets immortal
+// Don't consume nametags
+// Shift-right-click a mob with a nametag to remove its name
+// Remove swimming & make maneuvering in liquids easier
+// Make horse stats not random
+// Add structures/features designed to inspire the player. Like a dead tree or old ruined house. Probably mostly nature stuff.
+// Remove nether portal
+// Make budding amethyst spawn as an ore
+// Make leaves break faster (also make torches break instantly, also just make a thing to set individual block break speeds)
+// Output count for JeiCraftingRecipe
+// Output support for JeiMillingRecipe (is needed)
+// Increase item pickup range
 @SuppressWarnings("unused")
 @Mod(Rsc.ID)
 public class Rsc {

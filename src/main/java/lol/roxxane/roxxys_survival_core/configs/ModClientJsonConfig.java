@@ -21,7 +21,7 @@ import static lol.roxxane.roxxys_survival_core.util.Parsing.*;
 import static net.minecraftforge.fml.loading.FMLPaths.CONFIGDIR;
 
 public class ModClientJsonConfig {
-	public static boolean enable_tab_manipulation = false;
+	public static boolean enable_tab_manipulation = true;
 	public static boolean rsc_command_outputs_pretty_json = true;
 	public static boolean item_tags_in_tooltip = false;
 	public static boolean block_tags_in_tooltip = false;
@@ -54,7 +54,7 @@ public class ModClientJsonConfig {
 	}
 	private static void make_default_file() throws IOException {
 		var data = PRETTY_GSON.toJsonTree(New.map(
-			"enable_tab_manipulation", false,
+			"enable_tab_manipulation", true,
 			"tabs", New.map(
 				"add_end", New.map(
 					"ingredients", New.list(

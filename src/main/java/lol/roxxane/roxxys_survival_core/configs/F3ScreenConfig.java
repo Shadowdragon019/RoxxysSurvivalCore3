@@ -18,7 +18,7 @@ import static lol.roxxane.roxxys_survival_core.util.Parsing.json_to_normal;
 import static net.minecraftforge.fml.loading.FMLPaths.CONFIGDIR;
 
 public class F3ScreenConfig {
-	public static boolean survivalMode = false;
+	public static boolean survivalMode = true;
 	private static final Path PATH = Path.of(CONFIGDIR.get() + "/roxxys_survival_core/client/f3_screen_modification.json");
 	public static void load() {
 		if (!Files.exists(PATH))
@@ -36,7 +36,7 @@ public class F3ScreenConfig {
 	private static void make_default_file() throws IOException {
 		PATH.getParent().toFile().mkdirs();
 		var data = PRETTY_GSON.toJsonTree(New.map(
-			"survival_mode", false
+			"survival_mode", true
 		));
 		var writer = new FileWriter(PATH.toString());
 		writer.write(PRETTY_GSON.toJson(data));

@@ -28,15 +28,15 @@ public class ModServerConfig {
 		_int("survival_mining_cooldown", 0, 0, "Vanilla value is 5");
 	private static final IntValue _CREATIVE_MINING_COOLDOWN =
 		_int("creative_mining_cooldown", 0, 0, "Vanilla value is 5");
-	private static final BooleanValue _OVERRIDE_IFRAME_FUNCTIONALITY = _false("override_iframe_functionality");
+	private static final BooleanValue _OVERRIDE_IFRAME_FUNCTIONALITY = _true("override_iframe_functionality");
 	private static final IntValue _DEFAULT_IFRAMES = _int("default_iframes", 0, 0);
 	private static final ConfigValue<UnmodifiableConfig> _DAMAGE_TYPE_IFRAMES =
 		map_entries("damage_type_iframes", config("in_fire", 5, "lava", 5, "hot_floor", 5, "in_wall", 5, "cramming", 5,
 				"cactus", 5, "out_of_world", 5, "dry_out", 5, "sweet_berry_bush", 5),
 			Id::is,
 			value -> value instanceof Integer iframes && iframes > 0);
-	private static final BooleanValue _DISABLE_DURABILITY = _false("disable_durability");
-	private static final DoubleValue _CONSISTENT_SLIME_DAMAGE = _double("slime_damage", -1, -1,
+	private static final BooleanValue _DISABLE_DURABILITY = _true("disable_durability");
+	private static final DoubleValue _CONSISTENT_SLIME_DAMAGE = _double("slime_damage", 1, -1,
 		"Makes damage consistent across slime sizes", "Set to -1 for vanilla behavior");
 	@SuppressWarnings("ResultOfMethodCallIgnored")
 	private static final ConfigValue<String> _RSC_RECIPES_COMMAND_OUTPUT =
@@ -49,17 +49,17 @@ public class ModServerConfig {
 			}
 			return false;
 		});
-	private static final ConfigValue<Double> _CONSTANT_DESTROY_TIME = _double("constant_destroy_time", 1.5, -1);
+	private static final ConfigValue<Double> _CONSTANT_DESTROY_TIME = _double("constant_destroy_time", 0.25, -1);
 	public static final ForgeConfigSpec SPEC = BUILDER.build();
 	public static int survival_mining_cooldown = 0;
 	public static int creative_mining_cooldown = 0;
-	public static boolean override_iframe_functionality = false;
+	public static boolean override_iframe_functionality = true;
 	public static int default_iframes = 0;
 	public static final Map<ResourceLocation, Integer> DAMAGE_TYPE_IFRAMES = new HashMap<>();
-	public static boolean disable_durability = false;
-	public static double consistent_slime_damage = -1;
+	public static boolean disable_durability = true;
+	public static double consistent_slime_damage = 1;
 	public static Path rsc_recipes_command_output = Path.of(GAMEDIR.get() + "/rsc_output/recipes");
-	public static double constant_destroy_time = 1.5f;
+	public static double constant_destroy_time = 0.25f;
 	@SubscribeEvent
 	public static void on_reload(ModConfigEvent event) {
 		try {
