@@ -13,6 +13,6 @@ abstract class ZombieMixin {
 		at = @At(value = "INVOKE",
 			target = "Lnet/minecraft/world/entity/monster/Monster;createMonsterAttributes()Lnet/minecraft/world/entity/ai/attributes/AttributeSupplier$Builder;"))
 	private static AttributeSupplier.Builder changeMaxHealth(AttributeSupplier.Builder original) {
-		return original.add(Attributes.MAX_HEALTH, 10);
+		return original.add(Attributes.MAX_HEALTH, 10).add(Attributes.ARMOR, 0);
 	}
 }
