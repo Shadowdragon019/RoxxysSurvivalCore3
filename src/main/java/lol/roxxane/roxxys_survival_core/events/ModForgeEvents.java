@@ -4,13 +4,18 @@ import lol.roxxane.roxxys_survival_core.Rsc;
 import lol.roxxane.roxxys_survival_core.commands.RscCommand;
 import lol.roxxane.roxxys_survival_core.configs.F3ScreenConfig;
 import lol.roxxane.roxxys_survival_core.configs.ModClientJsonConfig;
+import lol.roxxane.roxxys_survival_core.mob_effects.ModMobEffects;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
 import net.minecraftforge.event.AddReloadListenerEvent;
 import net.minecraftforge.event.RegisterCommandsEvent;
+import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.TickEvent.PlayerTickEvent;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent.HarvestCheck;
@@ -90,5 +95,23 @@ public class ModForgeEvents {
 	@SubscribeEvent
 	public static void harvestCheck(HarvestCheck event) {
 		event.setCanHarvest(true);
+	}
+	@SubscribeEvent
+	public static void playerTick(PlayerTickEvent event) {
+		var player = event.player;
+		if (player.tickCount % 200 != 0)
+			return;
+		if (player.hasEffect(ModMobEffects.BLEEDING.get()))
+			return;
+		if (player.getHealth() >= player.getMaxHealth())
+			return;
+		if (event.phase == TickEvent.Phase.START)
+			return;
+		player.heal(1);
+	}
+	@SubscribeEvent
+	public static void playerHurt(LivingDamageEvent event) {
+		if (event.getEntity() instanceof Player player)
+			player.addEffect(new MobEffectInstance(ModMobEffects.BLEEDING.get(), 600, 0, false, false));
 	}
 }

@@ -31,7 +31,7 @@ import org.slf4j.Logger;
 // Jei recipe for naming items
 // Prevent zombies/undead from drowning (or turning into drowned)
 // Arrow signs to point the direction of out for caves
-// Enemies drop iron/diamond tools but they're very damaged (this is to show "Hey! Look at these awesome & better tools!)
+// Change what enemies can spawn with (nothing!)
 // Split tab config into multiple different files
 // Add option to remove item from tabs by type & ignoring nbt
 
@@ -41,10 +41,8 @@ import org.slf4j.Logger;
 // Rightclick with sawmill to open gui!
 // Make horses only require armor to ride
 // Disable fire tick by default
-// You slowly regen health over time. Getting hurt by an enemy causes bleeding & stops the regen.
 
 // Make furnaces not reduce fuel if not smelting anything
-// Reduce use of furances as much as possible
 // Make rooted dirt & hanging vines replecatable
 // Make dyeing recipes consistent with input
 // Merge all dyeing recipes. Make them all 8x variants
