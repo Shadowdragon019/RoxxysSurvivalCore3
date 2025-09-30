@@ -43,10 +43,6 @@ import org.slf4j.Logger;
 // Disable fire tick by default
 // You slowly regen health over time. Getting hurt by an enemy causes bleeding & stops the regen.
 
-// Spiders should also burn in day
-// Half mob health
-// Remove attack delay
-// Reduce damage pickaxes do?
 // Make furnaces not reduce fuel if not smelting anything
 // Reduce use of furances as much as possible
 // Make rooted dirt & hanging vines replecatable
@@ -55,15 +51,12 @@ import org.slf4j.Logger;
 
 // Make ores spawn in shale too
 // Replace smooth shale with cobble
-// The player can mine all blocks, pickaxes just speed things up
 // Add way to make fire. Just right-click with iron ingots
 // Banner pattern recipes
 // When animals are leaded they follow their owner
-// Increase block & entity interaction range to like 5
 // Add food for sprinting/jumping effects! (movement speed, jump height, block interaction range, item pickup range, fire proof, water breathing, mining speed)
 // Podzol, grass blocks, mycelium, etc craft into dirt
 // Seeds from grass & ferns!
-// Path blocks drop themselves
 // Make rain less common
 // Merge dye stuffs?
 // Add stuff I removed ike horses, pumpkins, animals, cake, etc for creativity
@@ -86,6 +79,10 @@ import org.slf4j.Logger;
 // Make leaves break faster (also make torches break instantly, also just make a thing to set individual block break speeds)
 // Output count for JeiCraftingRecipe
 // Output support for JeiMillingRecipe (is needed)
+// Disable wandering trader & raid spawns
+// Switching items in hand does not reset break progress
+// Make player & horse armor completely athestetic
+// Make discs & templates craftable
 @SuppressWarnings("unused")
 @Mod(Rsc.ID)
 public class Rsc {

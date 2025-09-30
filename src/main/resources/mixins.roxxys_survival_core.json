@@ -14,7 +14,8 @@
 	],
 	"mixins": [
 		"carve_pumpkins_with_swords.PumpkinBlockMixin",
-		"cave_spiders_dont_poison.CaveSpiderMixin",
+		"cave_spider_changes.CaveSpiderMixin",
+		"cave_spider_changes.EntityTypeMixin",
 		"change_hive_drops.BeehiveBlockMixin",
 		"constant_destroy_time.BlockBehaviourMixin",
 		"daylight_detector_is_stone.BlocksMixin",
@@ -23,11 +24,13 @@
 		"disable_durability.ItemStackMixin",
 		"explosions_drop_all_blocks.ExplosionConditionMixin",
 		"iframe_changes.LivingEntityMixin",
+		"increase_player_interaction_range.PlayerMixin",
 		"increase_player_pickup_range.PlayerMixin",
 		"ingredients_can_have_air_items.ShapeRecipeMixin",
 		"milk_bucket_does_not_remove_effects.MilkBucketItemMixin",
 		"modify_firework_star_recipe.FireworkStarRecipeMixin",
 		"name_tag_can_rename_items.NameTagItemMixin",
+		"no_attack_strength_cooldown.PlayerMixin",
 		"pickaxes_act_as_axe_and_shovels.PickaxeItemMixin",
 		"place_respawn_totem_at_worldgen.SimpleBlockFeatureMixin",
 		"remove_xp.ExperienceOrbMixin",
@@ -36,6 +39,7 @@
 		"slime_changes.SlimeMixin",
 		"stone_cutting_merge_recipes.StoneCuttingRecipeCategoryMixin",
 		"wasd_controllable_strider.StriderMixin",
-		"water_and_floating_dont_slow_down_dig_speed.PlayerMixin"
+		"water_and_floating_dont_slow_down_dig_speed.PlayerMixin",
+		"zombie_changes.ZombieMixin"
 	]
 }
