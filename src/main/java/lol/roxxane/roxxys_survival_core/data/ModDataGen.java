@@ -26,6 +26,7 @@ public class ModDataGen {
 		server(new ModLootTableProvider(output));
 		server(new ModMobEffectTagsProvider(output, provider, existingFileHelper));
 		server(new ModEntityTypeTagsProvider(output, provider, existingFileHelper));
+		//server(new BlockFamilyProvider(output));
 		client(new ModBlockStateProvider(output, existingFileHelper));
 		client(new ModItemModelProvider(output, existingFileHelper));
 		client(new ModLanguageProvider(output, "en_us"));

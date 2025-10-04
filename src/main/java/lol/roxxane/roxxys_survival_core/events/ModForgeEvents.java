@@ -4,6 +4,7 @@ import lol.roxxane.roxxys_survival_core.Rsc;
 import lol.roxxane.roxxys_survival_core.commands.RscCommand;
 import lol.roxxane.roxxys_survival_core.configs.F3ScreenConfig;
 import lol.roxxane.roxxys_survival_core.configs.ModClientJsonConfig;
+import lol.roxxane.roxxys_survival_core.data.BlockFamilyManager;
 import lol.roxxane.roxxys_survival_core.mob_effects.ModMobEffects;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.Registries;
@@ -85,6 +86,7 @@ public class ModForgeEvents {
 	public static void reload(AddReloadListenerEvent event) {
 		ModClientJsonConfig.load();
 		F3ScreenConfig.load();
+		event.addListener(new BlockFamilyManager());
 	}
 	@SubscribeEvent
 	public static void furnaceFuelBurnTime(FurnaceFuelBurnTimeEvent event) {
