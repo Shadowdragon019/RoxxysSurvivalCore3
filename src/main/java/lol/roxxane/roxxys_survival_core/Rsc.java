@@ -40,7 +40,7 @@ import org.slf4j.Logger;
 // Right click crafting table in air to open gui
 // Rightclick with sawmill to open gui!
 // Make horses only require armor to ride
-// Disable fire tick by default
+// Default game rules
 
 // Make furnaces not reduce fuel if not smelting anything
 // Make rooted dirt & hanging vines replecatable
@@ -79,7 +79,7 @@ import org.slf4j.Logger;
 // Output support for JeiMillingRecipe (is needed)
 // Disable wandering trader & raid spawns
 // Switching items in hand does not reset break progress
-// Make player & horse armor completely athestetic
+// Make player & horse armor completely atheistic
 // Make discs & templates craftable
 @SuppressWarnings("unused")
 @Mod(Rsc.ID)

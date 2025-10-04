@@ -1,6 +1,7 @@
 package lol.roxxane.roxxys_survival_core.jei;
 
 import lol.roxxane.roxxys_survival_core.Rsc;
+import lol.roxxane.roxxys_survival_core.jei.categories.SwitchingCategory;
 import lol.roxxane.roxxys_survival_core.recipes.JeiCraftingRecipe;
 import lol.roxxane.roxxys_survival_core.recipes.JeiMillingRecipe;
 import lol.roxxane.roxxys_survival_core.recipes.ModRecipeTypes;
@@ -10,6 +11,7 @@ import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.constants.RecipeTypes;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
+import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import mezz.jei.api.registration.IVanillaCategoryExtensionRegistration;
 import mezz.jei.api.runtime.IJeiRuntime;
@@ -17,6 +19,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.StonecutterRecipe;
+import snownee.kiwi.customization.block.family.BlockFamilies;
+import snownee.kiwi.util.KHolder;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -44,10 +48,23 @@ public class ModJeiPlugin implements IModPlugin {
 			.filter(recipe -> recipe instanceof JeiMillingRecipe) // No JeiMillingRecipes exist
 			.forEach(recipe -> hideRecipes(jeiRuntime, ((JeiMillingRecipe) recipe).hideRecipes));
 	}
+	public void registerCategories(IRecipeCategoryRegistration registration) {
+		var jeiHelpers = registration.getJeiHelpers();
+		var guiHelper = jeiHelpers.getGuiHelper();
+		registration.addRecipeCategories(new SwitchingCategory(guiHelper));
+	}
 	public void registerRecipes(IRecipeRegistration registration) {
-		assert Minecraft.getInstance().level != null;
+		var level = Minecraft.getInstance().level;
+		if (level == null) return;
 		registration.addRecipes(RecipeTypes.STONECUTTING,
-			Minecraft.getInstance().level.getRecipeManager().getAllRecipesFor(ModRecipeTypes.JEI_MILLING.get()).stream().map(recipe -> (StonecutterRecipe) recipe).toList());
+			level.getRecipeManager().getAllRecipesFor(ModRecipeTypes.JEI_MILLING.get()).stream().map(recipe -> (StonecutterRecipe) recipe).toList());
+		registration.addRecipes(ModJeiRecipeTypes.SWITCHING,
+			BlockFamilies.all().stream()
+				.filter(holder ->
+					holder.value().switchAttrs().enabled() &&
+						holder.value().switchAttrs().cascading())
+				.map(KHolder::value)
+				.toList());
 	}
 	@SuppressWarnings("unchecked")
 	public void hideRecipes(IJeiRuntime jeiRuntime, Map<ResourceLocation, List<ResourceLocation>> hideRecipes) {

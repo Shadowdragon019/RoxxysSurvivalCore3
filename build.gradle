@@ -127,6 +127,19 @@ repositories {
         name = "ModMaven"
         url = "https://modmaven.dev"
     }
+    mavenLocal()
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = "Curse Maven"
+                url = "https://cursemaven.com"
+            }
+        }
+        forRepositories(fg.repository)
+        filter {
+            includeGroup "curse.maven"
+        }
+    }
 }
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
@@ -136,6 +149,8 @@ dependencies {
         jarJar.ranged(it, "[0.4.1,)")
     }
     implementation fg.deobf("mezz.jei:jei-1.20.1-forge:15.20.0.106")
+    implementation fg.deobf("curse.maven:kiwi-303657:6466335")
+    implementation fg.deobf("curse.maven:kswitch-1017329:5601893")
 }
 mixin {
     add sourceSets.main, "mixins.${mod_id}.refmap.json"

@@ -19,5 +19,6 @@ public class ModLanguageProvider extends LanguageProvider {
 		add("gui.roxxys_survival_core.name_tag.edit_box", "Edit box");
 		add("gui.roxxys_survival_core.name_tag.name_tag", "Name tag");
 		add(ModMobEffects.BLEEDING.get(), "Bleeding");
+		add("jei.category.roxxys_survival_core.switching", "Switching");
 	}
 }
