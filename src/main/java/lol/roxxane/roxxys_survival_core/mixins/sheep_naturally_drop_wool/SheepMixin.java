@@ -41,13 +41,13 @@ abstract class SheepMixin extends Animal {
 					(random.nextFloat() - random.nextFloat()) * 0.1F,
 					random.nextFloat() * 0.05F,
 					(random.nextFloat() - random.nextFloat()) * 0.1F));
-			rsc$set_wool_drop_cooldown(6000);
+			rsc$set_wool_drop_cooldown(1200);
 			setSheared(true);
 		}
 	}
 	@Inject(method = "defineSynchedData", at = @At("TAIL"))
 	private void define_additional_synced_data(CallbackInfo ci) {
-		entityData.define(WOOL_DROP_COOLDOWN_ID, 6000);
+		entityData.define(WOOL_DROP_COOLDOWN_ID, 1200);
 	}
 	@Unique
 	public int rsc$get_wool_drop_cooldown() {
