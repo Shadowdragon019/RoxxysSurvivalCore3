@@ -3,7 +3,10 @@ package lol.roxxane.roxxys_survival_core.configs;
 import com.electronwill.nightconfig.core.UnmodifiableConfig;
 import lol.roxxane.roxxys_survival_core.Rsc;
 import lol.roxxane.roxxys_survival_core.util.Id;
+import lol.roxxane.roxxys_survival_core.util.New;
+import lol.roxxane.roxxys_survival_core.util.Parsing;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.common.ForgeConfigSpec.*;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -18,6 +21,8 @@ import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 
 import static lol.roxxane.roxxys_survival_core.util.New.config;
+import static lol.roxxane.roxxys_survival_core.util.Parsing.*;
+import static lol.roxxane.roxxys_survival_core.util.fuck_off_exceptions.FuckOffExceptions.doesRun;
 import static lol.roxxane.roxxys_survival_core.util.fuck_off_exceptions.FuckOffExceptions.trylog;
 import static net.minecraftforge.fml.loading.FMLPaths.GAMEDIR;
 
@@ -51,6 +56,11 @@ public class ModServerConfig {
 			return false;
 		});
 	private static final ConfigValue<Double> _CONSTANT_DESTROY_TIME = _double("constant_destroy_time", 0.25, -1);
+	@SuppressWarnings("ResultOfMethodCallIgnored")
+	private static final ConfigValue<UnmodifiableConfig> _BURNABLES = map_entries("burnables",
+		config("1", New.list("dirt", "coarse_dirt"), "2", New.list("apple", "stick")),
+		key -> doesRun(() -> Integer.parseInt(key)),
+		value -> is_collection(value, Parsing::is_item));
 	public static final ForgeConfigSpec SPEC = BUILDER.build();
 	public static int survival_mining_cooldown = 0;
 	public static int creative_mining_cooldown = 0;
@@ -61,6 +71,7 @@ public class ModServerConfig {
 	public static double consistent_slime_damage = 1;
 	public static Path rsc_recipes_command_output = Path.of(GAMEDIR.get() + "/rsc_output/recipes");
 	public static double constant_destroy_time = 0.25f;
+	public static final Map<Item, Integer> BURNABLES = new HashMap<>();
 	@SubscribeEvent
 	public static void on_reload(ModConfigEvent event) {
 		// TODO: Figure out why this is being weird :/
@@ -77,6 +88,12 @@ public class ModServerConfig {
 		trylog(() -> consistent_slime_damage = _CONSISTENT_SLIME_DAMAGE.get());
 		trylog(() -> rsc_recipes_command_output = Path.of(GAMEDIR.get() + "/" + _RSC_RECIPES_COMMAND_OUTPUT.get()));
 		trylog(() -> constant_destroy_time = _CONSTANT_DESTROY_TIME.get());
+		trylog(() -> {
+			BURNABLES.clear();
+			_BURNABLES.get().valueMap().forEach((key, value) ->
+				if_elements(value, element ->
+					BURNABLES.put(as_item(element), Integer.parseInt(key))));
+		});
 	}
 	// Bool
 	private static BooleanValue bool(String name, boolean _default, String... comments) {

@@ -13,6 +13,7 @@
 		"mining_cooldown.MultiPlayerGameModeMixin"
 	],
 	"mixins": [
+		"always_best_compost_chance.ComposterBlockMixin",
 		"carve_pumpkins_with_swords.PumpkinBlockMixin",
 		"cave_spider_changes.CaveSpiderMixin",
 		"cave_spider_changes.EntityTypeMixin",

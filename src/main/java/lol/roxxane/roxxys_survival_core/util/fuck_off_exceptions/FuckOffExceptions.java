@@ -20,6 +20,22 @@ public class FuckOffExceptions {
 	public static <T> LogConsumer<T> trylog(LogConsumer<T> consumer) {
 		return consumer;
 	}
+	public static boolean doesRun(CrashRunnable runnable) {
+		try {
+			runnable.run();
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+	public static boolean doesCrash(CrashRunnable runnable) {
+		try {
+			runnable.run();
+			return false;
+		} catch (Exception e) {
+			return true;
+		}
+	}
 	@FunctionalInterface
 	public interface CrashSupplier<T> extends Supplier<T> {
 		T $() throws Exception;

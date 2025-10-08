@@ -21,7 +21,6 @@ import net.minecraftforge.event.furnace.FurnaceFuelBurnTimeEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 
-import static lol.roxxane.roxxys_survival_core.configs.ModClientJsonConfig.BURNABLES;
 import static lol.roxxane.roxxys_survival_core.configs.ModServerConfig.*;
 import static net.minecraft.network.chat.Component.empty;
 import static net.minecraft.network.chat.Component.translatable;

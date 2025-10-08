@@ -5,7 +5,6 @@ import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 import lol.roxxane.roxxys_survival_core.util.New;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
 import java.io.FileNotFoundException;
@@ -14,7 +13,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 import static lol.roxxane.roxxys_survival_core.Rsc.*;
 import static lol.roxxane.roxxys_survival_core.util.Parsing.*;
@@ -35,7 +37,6 @@ public class ModClientJsonConfig {
 	public static final Map<ResourceLocation, Map<ItemStack, List<ItemStack>>> TABS_ADD_BEFORE = new LinkedHashMap<>();
 	public static final Map<ResourceLocation, List<ItemStack>> TABS_REMOVE_POST = new LinkedHashMap<>();
 	public static final List<ResourceLocation> REMOVE_JEI_CATEGORIES = new ArrayList<>();
-	public static final Map<Item, Integer> BURNABLES = new HashMap<>();
 	private static final Path PATH = Path.of(CONFIGDIR.get().toString() + "/roxxys_survival_core_client.json");
 	public static void load() {
 		if (!Files.exists(PATH))
@@ -240,11 +241,6 @@ public class ModClientJsonConfig {
 		REMOVE_JEI_CATEGORIES.clear();
 		if_has_elements(data, "remove_jei_categories", element ->
 			if_id(element, REMOVE_JEI_CATEGORIES::add));
-		BURNABLES.clear();
-		if_has_entries(data, "burnables", (key, value) -> {
-			if (is_item(key) && value instanceof Number number)
-				BURNABLES.put(as_item(key), number.intValue());
-		});
 	}
 	public static Gson get_command_gson() {
 		return rsc_command_outputs_pretty_json ? PRETTY_GSON: COMPACT_GSON;
