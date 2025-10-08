@@ -80,7 +80,29 @@ import org.slf4j.Logger;
 // Disable wandering trader & raid spawns
 // Switching items in hand does not reset break progress
 // Make player & horse armor completely atheistic
-// Make discs & templates craftable
+// Dye in loom, ack. Deal wit dat.
+// Add mods later
+// Remove gui from anvil, stone cutter, etc
+// Use my custom name tag mod
+// Replace ore gen with raw blocks (raw blocks drop raw singles)
+// Remove drowning
+// Remove bleeding, player always slowly heals
+// Reduce the amount of things that are flammable
+// Make enemies just spawn in caves
+// Make glowing signs obtainable
+
+
+
+// PACK IDEA:
+// It fights against perfectionism. (this may just be a mental change instead. a person change. not a game change)
+// Instead of the wood & stripped variants, logs are just logs
+// Less wood variants.
+// Just simplier. Less overwhelm. Make it so the player can just build an idea.
+// Discourage perfectionism
+// Reduce the amount of building blocks the player has access too at once?
+// Split the game into phases
+// They stay in each phase for a while
+// Every time they go to a new phase, or place, they unlock more building blocks/utils
 @SuppressWarnings("unused")
 @Mod(Rsc.ID)
 public class Rsc {

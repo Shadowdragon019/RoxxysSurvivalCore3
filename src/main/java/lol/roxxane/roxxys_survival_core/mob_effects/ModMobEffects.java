@@ -6,12 +6,9 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-import static net.minecraft.world.effect.MobEffectCategory.HARMFUL;
-
 public class ModMobEffects {
 	public static final DeferredRegister<MobEffect> REGISTRY = DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, Rsc.ID);
 	private static <T extends MobEffect> RegistryObject<T> register(String path, T effect) {
 		return REGISTRY.register(path, () -> effect);
 	}
-	public static final RegistryObject<ModMobEffect> BLEEDING = register("bleeding", new ModMobEffect(HARMFUL, 16262179));
 }

@@ -28,13 +28,12 @@ public class BlockFamilyProvider implements DataProvider {
 		data.put("test", List.of(Items.DIRT, Items.DIRT_PATH));
 		data.forEach((id, items) -> {
 			var json = new JsonArray();
-			items.forEach(item ->
-				json.add(requireNonNull(ForgeRegistries.ITEMS.getKey(item)).toString()));
+			items.forEach(item -> json.add(requireNonNull(ForgeRegistries.ITEMS.getKey(item)).toString()));
 			futures.add(DataProvider.saveStable(output, json, pathProvider.json(Id.mod(id))));
 		});
 		return CompletableFuture.allOf(futures.toArray(CompletableFuture[]::new));
 	}
 	public String getName() {
-		return "block_families";
+		return "block_family";
 	}
 }
